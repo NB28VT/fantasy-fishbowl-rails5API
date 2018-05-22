@@ -28,6 +28,14 @@ gem 'puma', '~> 3.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
+end
+
+group :test do
+  gem 'factory_bot_rails', '~> 4.8', '>= 4.8.2'
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
+  gem 'faker', '~> 1.8', '>= 1.8.7'
+  gem 'database_cleaner', '~> 1.7'
 end
 
 group :development do
