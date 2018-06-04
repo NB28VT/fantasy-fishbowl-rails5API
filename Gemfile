@@ -14,6 +14,8 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.0'
 gem 'devise', '~> 4.4', '>= 4.4.3'
 gem 'devise_invitable', '~> 1.5', '>= 1.5.5'
+gem 'devise-jwt', '~> 0.1.0'
+gem 'dotenv', '~> 2.1', '>= 2.1.1'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -30,6 +32,7 @@ gem 'devise_invitable', '~> 1.5', '>= 1.5.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'pry'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
 end
 

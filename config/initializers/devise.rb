@@ -3,13 +3,29 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # Prevent flash messages?
+  config.navigational_formats = []
+
+  # JWT config
+  config.jwt do |jwt|
+    jwt.secret = ENV['DEVISE_JWT_SECRET_KEY']
+
+    jwt.dispatch_requests = [
+      ['POST', %r{^/login$}]
+    ]
+
+    jwt.expiration_time = 1.day.to_i
+  end
+
+
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '156af2215763a02959c05980375accb27a4f67955b61ed146ce92d6ce6901cc35c34c9afe82e9f5ee90f53f91325885021baef1be9ea3e8af78242ab55f99585'
-  
+
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
