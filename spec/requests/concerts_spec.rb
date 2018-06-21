@@ -9,11 +9,11 @@ RSpec.describe "Concerts", type: :request do
 
     it "returns a list of concerts" do
       user = create(:user)
-      concerts = create_list(:concert)
+      concerts = create_list(:concert, 2)
 
       token = sign_in_user(user)
 
-      get "/upcoming_concerts", params: {authentication_token: token}
+      get "/upcoming_concerts", {}, {Authorization: token}
 
       expect(json.count).to eq(2)
       expect(json.first["id"]).to eq(concerts.first.id)
