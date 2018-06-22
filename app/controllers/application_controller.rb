@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   before_action :authenticate_request
+  include ActionController::Serialization
   # attr_reader :current_user
 
   class AuthenticationError < StandardError; end
