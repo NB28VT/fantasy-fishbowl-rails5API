@@ -1,6 +1,11 @@
 require "rails_helper"
 
 RSpec.describe "Concerts", type: :request do
+  before(:each) do
+    user = create(:user)
+    @token = sign_in_user(user)
+  end
+
   describe "GET /concerts" do
     it "raises an error if a user is not authenticated" do
       get "/concerts"
@@ -8,12 +13,9 @@ RSpec.describe "Concerts", type: :request do
     end
 
     it "returns a list of concerts" do
-      user = create(:user)
       concerts = create_list(:concert, 2)
 
-      token = sign_in_user(user)
-
-      get "/concerts", params: {}, headers: {Authorization: token}
+      get "/concerts", params: {}, headers: {Authorization: @token}
 
       expect(json["concerts"].count).to eq(2)
       expect(json["concerts"].first).to eq(
@@ -26,26 +28,57 @@ RSpec.describe "Concerts", type: :request do
     end
 
     it "returns concerts in chronological order by show date" do
-      user = create(:user)
       create(:concert, show_date: 2.days.from_now)
       create(:concert, show_date: 1.days.from_now)
-      token = sign_in_user(user)
 
-      get "/concerts", params: {authentication_token: token}
+      get "/concerts", params: {}, headers: {Authorization: @token}
 
-      expect(json.first.show_date).to be < json.second.show_date
+      first_show_date = Date.strptime(json["concerts"].first["show_date"], "%m/%d/%Y")
+      second_show_date = Date.strptime(json["concerts"].second["show_date"], "%m/%d/%Y")
+      expect(first_show_date).to be < second_show_date
+    end
+  end
+
+  describe "GET /concerts/upcoming" do
+    it "returns a list of upcoming concerts" do
+      upcoming_concert = create(:concert, show_date: 1.days.from_now)
+      past_concert = create(:concert, show_date: 1.days.ago)
+
+      get "/concerts/upcoming", params: {}, headers: {Authorization: @token}
+
+      expect(json["concerts"].count).to eq(1)
+
+      show_date = json["concerts"].first["show_date"]
+      formatted_date = Date.strptime(show_date, "%m/%d/%Y")
+      expect(formatted_date).to be > Date.current
     end
 
-    context "when only upcoming concerts are requested" do
-      it "returns a list of upcoming concerts"
-      it "does not return any concerts that have gone by"
+    it "sorts concerts in chronological order by show date" do
+      create(:concert, show_date: 2.days.from_now)
+      create(:concert, show_date: 1.days.from_now)
+
+      get "/concerts/upcoming", params: {}, headers: {Authorization: @token}
+
+      first_show_date = Date.strptime(json["concerts"].first["show_date"], "%m/%d/%Y")
+      second_show_date = Date.strptime(json["concerts"].second["show_date"], "%m/%d/%Y")
+      expect(first_show_date).to be < second_show_date
     end
 
   end
 
   describe "GET /concerts/:id" do
     context "when a show has already occured" do
-      it "returns the concerts venue data"
+      it "returns basic concert information" do
+        concert = create(:concert)
+
+        get "/concerts/#{concert.id}", params: {}, headers: {Authorization: @token}
+
+        concert = json["concert"]
+        expect(concert["id"]).to eq(concert.id)
+        expect(concert["show_date"]).to eq(concert.show_date)
+        expect(concert["venue_name"]).to eq(concert.venue_name)
+      end
+
       it "returns the concert's sets ordered by setlist position"
       it "returns the concerts song performances ordered by setlist position"
     end
