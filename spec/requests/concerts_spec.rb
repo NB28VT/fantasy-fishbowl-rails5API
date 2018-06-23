@@ -73,18 +73,60 @@ RSpec.describe "Concerts", type: :request do
 
         get "/concerts/#{concert.id}", params: {}, headers: {Authorization: @token}
 
-        concert = json["concert"]
-        expect(concert["id"]).to eq(concert.id)
-        expect(concert["show_date"]).to eq(concert.show_date)
-        expect(concert["venue_name"]).to eq(concert.venue_name)
+        expect(json["concert"]).to eq(
+          {
+            "id" => concert.id,
+            "show_date" => concert.show_date.strftime("%m/%d/%Y"),
+            "venue_name" => concert.venue_name,
+            "concert_sets" => []
+          }
+        )
       end
 
-      it "returns the concert's sets ordered by setlist position"
-      it "returns the concerts song performances ordered by setlist position"
+      it "returns the concert's sets ordered by set number" do
+        concert = create(:concert)
+        concert_set_1 = create(:concert_set, concert: concert, set_number: 1)
+        concert_set_2 = create(:concert_set, concert: concert, set_number: 2)
+
+        get "/concerts/#{concert.id}", params: {}, headers: {Authorization: @token}
+
+        concert = json["concert"]
+        expect(concert["concert_sets"].count).to eq(2)
+        expect(concert["concert_sets"].first["set_number"]).to eq(1)
+        expect(concert["concert_sets"].second["set_number"]).to eq(2)
+
+        expect(concert["concert_sets"].first).to eq(
+          {
+            "set_number" => concert_set_1.set_number,
+            "song_performances" => []
+          }
+        )
+      end
+
+      it "returns the concerts song performances ordered by setlist position" do
+        concert = create(:concert)
+        concert_set = create(:concert_set, concert: concert)
+        song = create(:song)
+        song_2 = create(:song)
+
+        create(:song_performance, song: song_2, concert_set: concert_set, setlist_position: 2)
+        song_1 = create(:song_performance, song: song, concert_set: concert_set, setlist_position: 1)
+
+        get "/concerts/#{concert.id}", params: {}, headers: {Authorization: @token}
+
+        set = json["concert"]["concert_sets"].first
+        expect(set["song_performances"].first).to eq({"name" => song.name})
+      end
     end
 
     context "when a show is yet to occur" do
-      it "returns blank data for concert sets and song performances"
+      it "returns empty data for concert sets and song performances" do
+        concert = create(:concert)
+
+        get "/concerts/#{concert.id}", params: {}, headers: {Authorization: @token}
+
+        expect(json["concert"]["concert_sets"]).to eq([])
+      end
     end
   end
 
