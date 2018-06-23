@@ -1,11 +1,9 @@
 class ConcertSerializer < ActiveModel::Serializer
-  attributes :id, :show_date, :venue_name, :sets
+  attributes :id, :show_date, :venue_name
 
   def show_date
     object.show_date.strftime("%m/%d/%Y")
   end
 
-  def sets
-    object.concert_sets
-  end
+  has_many :concert_sets
 end

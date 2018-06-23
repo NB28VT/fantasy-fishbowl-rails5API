@@ -78,7 +78,7 @@ RSpec.describe "Concerts", type: :request do
             "id" => concert.id,
             "show_date" => concert.show_date.strftime("%m/%d/%Y"),
             "venue_name" => concert.venue_name,
-            "sets" => []
+            "concert_sets" => []
           }
         )
       end
@@ -91,22 +91,31 @@ RSpec.describe "Concerts", type: :request do
         get "/concerts/#{concert.id}", params: {}, headers: {Authorization: @token}
 
         concert = json["concert"]
-        expect(concert["sets"].count).to eq(2)
-        expect(concert["sets"].first["set_number"]).to eq(1)
-        expect(concert["sets"].second["set_number"]).to eq(2)
+        expect(concert["concert_sets"].count).to eq(2)
+        expect(concert["concert_sets"].first["set_number"]).to eq(1)
+        expect(concert["concert_sets"].second["set_number"]).to eq(2)
+
+        expect(concert["concert_sets"].first).to eq(
+          {
+            "set_number" => concert_set_1.set_number,
+            "song_performances" => []
+          }
+        )
       end
 
       it "returns the concerts song performances ordered by setlist position" do
         concert = create(:concert)
         concert_set = create(:concert_set, concert: concert)
         song = create(:song)
-        create(:song_performance, song: song, concert_set: concert_set, setlist_position: 1)
-        create(:song_performance, song: song, concert_set: concert_set, setlist_position: 2)
+        song_2 = create(:song)
+
+        create(:song_performance, song: song_2, concert_set: concert_set, setlist_position: 2)
+        song_1 = create(:song_performance, song: song, concert_set: concert_set, setlist_position: 1)
 
         get "/concerts/#{concert.id}", params: {}, headers: {Authorization: @token}
 
-        set = json["concert"]["sets"].first
-        expect(set["songs"].first["name"]).to eq(song.name)
+        set = json["concert"]["concert_sets"].first
+        expect(set["song_performances"].first).to eq({"name" => song.name})
       end
     end
 
@@ -116,7 +125,7 @@ RSpec.describe "Concerts", type: :request do
 
         get "/concerts/#{concert.id}", params: {}, headers: {Authorization: @token}
 
-        expect(json["concert"]["sets"]).to eq([])
+        expect(json["concert"]["concert_sets"]).to eq([])
       end
     end
   end
