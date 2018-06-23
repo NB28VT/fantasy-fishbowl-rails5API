@@ -1,7 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+# Summer Tour
+Concert.find_or_create_by(show_date: Date.new(2018,7,17), venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV")
+Concert.find_or_create_by(show_date: Date.new(2018,7,18), venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV")
+Concert.find_or_create_by(show_date: Date.new(2018,7,20), venue_name: "The Gorge Amphitheatre, George, WA")
+Concert.find_or_create_by(show_date: Date.new(2018,7,21), venue_name: "The Gorge Amphitheatre, George, WA")
+Concert.find_or_create_by(show_date: Date.new(2018,7,22), venue_name: "The Gorge Amphitheatre, George, WA")
+Concert.find_or_create_by(show_date: Date.new(2018,7,24), venue_name: "Bill Graham Civic Auditorium, San Francisco, CA")
+Concert.find_or_create_by(show_date: Date.new(2018,7,25), venue_name: "Bill Graham Civic Auditorium, San Francisco, CA")
+Concert.find_or_create_by(show_date: Date.new(2018,7,27), venue_name: "The Forum, Inglewood, CA")
+Concert.find_or_create_by(show_date: Date.new(2018,7,28), venue_name: "The Forum, Inglewood, CA")
+Concert.find_or_create_by(show_date: Date.new(2018,7,31), venue_name: "Austin360 Amphitheater, Austin, TX")
+Concert.find_or_create_by(show_date: Date.new(2018,8,3), venue_name: "Verizon Amphitheatre Alpharetta, GA")
+Concert.find_or_create_by(show_date: Date.new(2018,8,4), venue_name: "Verizon Amphitheatre Alpharetta, GA")
+Concert.find_or_create_by(show_date: Date.new(2018,8,5), venue_name: "Verizon Amphitheatre Alpharetta, GA")
+Concert.find_or_create_by(show_date: Date.new(2018,8,7), venue_name: "BB&T Pavilion, Camden, NJ")
+Concert.find_or_create_by(show_date: Date.new(2018,8,8), venue_name: "BB&T Pavilion, Camden, NJ")
+Concert.find_or_create_by(show_date: Date.new(2018,8,10), venue_name: "Coastal Credit Union Music Park at Walnut Creek, Raleigh, NC")
+Concert.find_or_create_by(show_date: Date.new(2018,8,11), venue_name: "Merriweather Post Pavilion, Columbia, MD")
+Concert.find_or_create_by(show_date: Date.new(2018,8,12), venue_name: "Merriweather Post Pavilion, Columbia, MD")
+
+Concert.find_or_create_by(show_date: Date.new(2018,8,17), venue_name: "Watkins Glen International, Watkins Glen, NY")
+Concert.find_or_create_by(show_date: Date.new(2018,8,18), venue_name: "Watkins Glen International, Watkins Glen, NY")
+Concert.find_or_create_by(show_date: Date.new(2018,8,19), venue_name: "Watkins Glen International, Watkins Glen, NY")
+
+Concert.find_or_create_by(show_date: Date.new(2018,8,31), venue_name: "Dick’s Sporting Goods Park, Commerce City, CO")
+Concert.find_or_create_by(show_date: Date.new(2018,9,1), venue_name: "Dick’s Sporting Goods Park, Commerce City, CO")
+Concert.find_or_create_by(show_date: Date.new(2018,9,2), venue_name: "Dick’s Sporting Goods Park, Commerce City, CO")
