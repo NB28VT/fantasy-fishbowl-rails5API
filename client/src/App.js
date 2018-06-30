@@ -26,7 +26,16 @@ const fakeAuth = {
 }
 
 const PublicPage = () => <h3>PublicPage</h3>
-const ProtectedPage = () => <h3>ProtectedPage</h3>
+const Protected = () => <h3>ProtectedPage</h3>
+
+const PrivateRoute = ({component: Component, ...rest}) => (
+  // This is a crap solution React Router, TODO: find a better auth paradigm
+  <Route {...rest} render={(props) =>(
+    fakeAuth.isAuthenticated === true
+    ? <Component {...props}/>
+    : <Redirect to="/login" />
+  )}/>
+)
 
 class App extends Component {
   // componentDidMount() {
@@ -36,16 +45,22 @@ class App extends Component {
   //   .catch(error => console.log(error))
   // }
 
+
+
   render() {
     return (
       <div >
         <Router>
           <div>
-            <Link to="/public">Public Page</Link>
-            <Link to="/protected">Protected Page</Link>
-            <Link to="/login">Protected Page</Link>
+            <ul>
+              <li><Link to="/public">Public Page</Link></li>
+              <li><Link to="/protected">Protected Page</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </ul>
 
+            <Route path="/public" component={Login}></Route>
             <Route path="/login" component={Login}></Route>
+            <PrivateRoute path="/protected" component={Protected} />
           </div>
         </Router>
       </div>
