@@ -21,14 +21,7 @@ class Login extends Component {
     this.updateEmail = this.updateEmail.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.loginUser = this.loginUser.bind(this);
   }
-
-  // loginUser(token){
-  //   debugger;
-  //   // Figure out how to use parent function again
-  //   this.props.loginUser(token);
-  // }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -45,11 +38,6 @@ class Login extends Component {
     .then((responseData) => {
         this.props.loginUser(responseData["token"]);
         this.setState({redirectToReferrer: true})
-        // If login is successful
-        // update token in app state
-        // update loggedin to true
-        // update login state to redirect to refferer
-
       }
     )
   }
