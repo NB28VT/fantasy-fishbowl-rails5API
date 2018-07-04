@@ -1,4 +1,5 @@
 module Services
+  class AuthenticationError < StandardError; end
   class UserAuthenticator
     def initialize(email, password)
       @email = email
