@@ -15,7 +15,6 @@ module Services
     private
 
     def get_user
-      Rails.logger.info @email
       user = User.find_by(email: @email)
       return user if user && user.authenticate(@password)
       return nil

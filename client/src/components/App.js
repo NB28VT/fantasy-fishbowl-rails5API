@@ -57,7 +57,6 @@ class App extends Component {
               {/* <li><Link to="/login">Login</Link></li> */}
             </ul>
               <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken}></PrivateRoute>
-              {/* <PrivateRoute path="/concerts/:id" component={Concert}></PrivateRoute> */}
               <Route path="/login" render={(props) => <Login loginUser={this.loginUser}/>}></Route>
           </div>
         </Router>
