@@ -1,9 +1,20 @@
 import React, {Component} from "react";
 
 class Concert extends Component {
-  // TODO: should fetch the deets on this concert using the ID
+  // Just blocking in ID for now
+  constructor(props) {
+    super(props)
+    this.state = {
+      // concert: []
+      concertID: null
+    }
+  }
+  componentDidMount() {
+    this.setState({concertID: this.props.match.params.id})
+  }
+
   render() {
-    return(<h1>{this.props.match.id}</h1>)
+    return(<h1>{this.state.concertID}</h1>)
   }
 }
 

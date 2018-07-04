@@ -3,13 +3,10 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Redirect,
-  Switch
+  Redirect
 } from 'react-router-dom';
 import Login from './Login';
-import Concerts from './Concerts'
-import Concert from './Concert'
-
+import Concerts from './Concerts';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -59,11 +56,9 @@ class App extends Component {
               <li><Link to="/concerts">Shows</Link></li>
               {/* <li><Link to="/login">Login</Link></li> */}
             </ul>
-            <Switch>
               <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken}></PrivateRoute>
-              <PrivateRoute path="/concerts/:id" component={Concert}></PrivateRoute>
+              {/* <PrivateRoute path="/concerts/:id" component={Concert}></PrivateRoute> */}
               <Route path="/login" render={(props) => <Login loginUser={this.loginUser}/>}></Route>
-            </Switch>
           </div>
         </Router>
       </div>
