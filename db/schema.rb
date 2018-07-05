@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180622113952) do
+ActiveRecord::Schema.define(version: 20180705141851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "concert_predictions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "concert_id"
+    t.integer  "submission_score", default: 0
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["concert_id"], name: "index_concert_predictions_on_concert_id", using: :btree
+    t.index ["user_id"], name: "index_concert_predictions_on_user_id", using: :btree
+  end
 
   create_table "concert_sets", force: :cascade do |t|
     t.integer  "concert_id"
@@ -40,6 +50,17 @@ ActiveRecord::Schema.define(version: 20180622113952) do
     t.index ["song_id"], name: "index_song_performances_on_song_id", using: :btree
   end
 
+  create_table "song_predictions", force: :cascade do |t|
+    t.integer  "concert_prediction_id"
+    t.integer  "song_id"
+    t.integer  "set_position"
+    t.integer  "setlist_position"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["concert_prediction_id"], name: "index_song_predictions_on_concert_prediction_id", using: :btree
+    t.index ["song_id"], name: "index_song_predictions_on_song_id", using: :btree
+  end
+
   create_table "songs", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -54,7 +75,11 @@ ActiveRecord::Schema.define(version: 20180622113952) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "concert_predictions", "concerts"
+  add_foreign_key "concert_predictions", "users"
   add_foreign_key "concert_sets", "concerts"
   add_foreign_key "song_performances", "concert_sets"
   add_foreign_key "song_performances", "songs"
+  add_foreign_key "song_predictions", "concert_predictions"
+  add_foreign_key "song_predictions", "songs"
 end
