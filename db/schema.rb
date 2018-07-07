@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180705141851) do
+ActiveRecord::Schema.define(version: 20180707142009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 20180705141851) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prediction_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "song_performances", force: :cascade do |t|
     t.integer  "concert_set_id"
     t.integer  "song_id"
@@ -53,10 +59,9 @@ ActiveRecord::Schema.define(version: 20180705141851) do
   create_table "song_predictions", force: :cascade do |t|
     t.integer  "concert_prediction_id"
     t.integer  "song_id"
-    t.integer  "set_position"
-    t.integer  "setlist_position"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "prediction_category_id"
     t.index ["concert_prediction_id"], name: "index_song_predictions_on_concert_prediction_id", using: :btree
     t.index ["song_id"], name: "index_song_predictions_on_song_id", using: :btree
   end

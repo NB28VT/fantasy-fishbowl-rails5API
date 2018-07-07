@@ -1,8 +1,7 @@
 class SongPrediction < ActiveRecord::Base
   belongs_to :song
   belongs_to :concert_prediction
+  belongs_to :prediction_category
 
-  # TODO: consider tying this directly to concert set
-  validates_presence_of :setlist_position
-  validates_presence_of :set_position
+  validates_presence_of :prediction_category_id
 end

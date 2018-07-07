@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     collection do
       get :upcoming
     end
+    member do
+      post :prediction
+    end
   end
 
   resources :songs, only: [:index]
