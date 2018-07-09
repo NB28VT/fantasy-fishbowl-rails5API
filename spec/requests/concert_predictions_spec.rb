@@ -82,7 +82,7 @@ RSpec.describe "Concert Predictions" do
 
       put "/concerts/#{concert.id}/concert_predictions/#{prediction.id}", params:{
           concert_prediction: {
-            song_predictions: [
+            song_predictions_attributes: [
               {id: song_prediction.id, song_id: new_song.id}
             ]
           }
