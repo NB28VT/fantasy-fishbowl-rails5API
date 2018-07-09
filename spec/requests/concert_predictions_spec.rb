@@ -71,10 +71,41 @@ RSpec.describe "Concert Predictions" do
     end
   end
 
-  describe "PUT /concerts/:id/predictions/id:" do
+  describe "PUT /concerts/:id/concert_predictions/:id" do
     it "changes the song for a prediction" do
+      concert = create(:concert)
+      prediction = create(:concert_prediction, concert: concert, user: @user)
+      prediction_category = create(:prediction_category)
+      old_song = create(:song, name: "Scooty Puff Jr.")
+      new_song = create(:song, name: "Give Bender a Hug")
+      song_prediction = create(:song_prediction, song: old_song, concert_prediction: prediction, prediction_category: prediction_category)
+
+      put "/concerts/#{concert.id}/concert_predictions/#{prediction.id}", params:{
+          concert_prediction: {
+            song_predictions: [
+              {id: song_prediction.id, song_id: new_song.id}
+            ]
+          }
+      }.to_json, headers: {Authorization: @token, "Content-Type" => "application/json"}
+
+      expect(json["concert_prediction"]).to eq(
+        {
+          "id" => prediction.id,
+          "concert_id" => concert.id,
+          "song_predictions" => [
+            {
+              "id" => song_prediction.id,
+              "song" => new_song.name,
+              "category" => song_prediction.prediction_category.name
+            }
+          ]
+        }
+      )
+
+      # Model validations
 
     end
+
     it "verifies the user owns the prediction they are are editing"
     it "raises an error if the deadline for editing a prediction has passed"
   end

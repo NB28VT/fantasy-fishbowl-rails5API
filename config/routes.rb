@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :upcoming
     end
-    resources :predictions, only: [:index, :show, :create, :edit]
+    resources :concert_predictions, only: [:index, :show, :create, :update]
   end
 
   resources :songs, only: [:index]
