@@ -5,9 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :upcoming
     end
-    member do
-      post :prediction
-    end
+    resources :predictions, only: [:index, :show, :create, :edit]
   end
 
   resources :songs, only: [:index]
