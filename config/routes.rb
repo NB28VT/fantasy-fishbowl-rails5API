@@ -8,5 +8,11 @@ Rails.application.routes.draw do
     resources :concert_predictions, only: [:index, :show, :create, :update]
   end
 
+  resources :users, only: [:index, :show] do
+    member do
+      get :concert_predictions
+    end
+  end
+
   resources :songs, only: [:index]
 end

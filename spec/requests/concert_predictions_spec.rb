@@ -6,11 +6,11 @@ RSpec.describe "Concert Predictions" do
     @token = sign_in_user(@user)
   end
 
-  describe "POST /concerts/:id/prediction" do
+  describe "POST /concerts/:id/concert_predictions" do
     it "creates a concert prediction" do
       concert = create(:concert)
 
-      post "/concerts/#{concert.id}/predictions", params: { song_predictions: []}.to_json, headers: {Authorization: @token, "Content-Type" => "application/json"}
+      post "/concerts/#{concert.id}/concert_predictions", params: { concert_prediction: {song_predictions_attributes: []}}.to_json, headers: {Authorization: @token, "Content-Type" => "application/json"}
 
       expect(response.response_code).to eq(200)
       expect(concert.concert_predictions.count).to eq(1)
@@ -25,13 +25,15 @@ RSpec.describe "Concert Predictions" do
       songs = create_list(:song, 2)
       prediction_category = create(:prediction_category, name: "First Set Opener")
 
-      post "/concerts/#{concert.id}/predictions", params: {
-        song_predictions: [
-          {
-            song_id: songs.first.id,
-            prediction_category_id: prediction_category.id
-          }
-        ]
+      post "/concerts/#{concert.id}/concert_predictions", params: {
+        concert_prediction: {
+          song_predictions_attributes: [
+            {
+              song_id: songs.first.id,
+              prediction_category_id: prediction_category.id
+            }
+          ]
+        }
       }, headers: {Authorization: @token}
 
       concert_prediction = concert.concert_predictions.first
@@ -46,7 +48,7 @@ RSpec.describe "Concert Predictions" do
     it "raises an error if the deadline for creating a prediction has passed"
   end
 
-  describe "GET /concerts/:id/predictions/:id" do
+  describe "GET /concerts/:id/concert_predictions/:id" do
     it "returns a prediction's details" do
       concert = create(:concert)
       prediction = create(:concert_prediction, concert: concert, user: @user)
@@ -101,27 +103,48 @@ RSpec.describe "Concert Predictions" do
           ]
         }
       )
-
-      # Model validations
-
     end
 
     it "verifies the user owns the prediction they are are editing"
     it "raises an error if the deadline for editing a prediction has passed"
   end
 
+  describe "GET /users/:id/concert_predictions" do
+    it "returns a list of the users predictions" do
+      predictions = create_list(:concert_prediction, 2, user: @user)
 
-  describe "GET /user/:id/predictions" do
-    it "returns a list of the users predictions"
+      get "/users/#{@user.id}/concert_predictions", params: {}, headers: {Authorization: @token}
+
+      expect(json["concert_predictions"].count).to eq(2)
+      expect(json["concert_predictions"].first).to eq(
+        {
+          "id" => predictions.first.id,
+          "user_id" => @user.id,
+          "concert_id" => predictions.first.concert_id,
+          "song_performances" => predictions.first.song_predictions
+          "score" => predictions.first.score
+        }
+      )
+    end
   end
 
-  describe "GET /concerts/:id/predictions" do
-    it "returns a list of all predictions for a concert"
-    it "includes the final score for a prediction"
-  end
+  describe "GET /concerts/:id/concert_predictions" do
+    it "returns a list of all predictions for a concert" do
+      concert = create(:concert)
+      predictions = create_list(:concert_prediction, 2, concert: concert)
 
-  describe "GET /concerts/:id/predictions" do
-    it "returns all prediction for a concert"
-  end
+      get "/concerts/#{concert.id}/concert_predictions", params: {}, headers: {Authorization: @token}
 
+      expect(json["concert_predictions"].count).to eq(2)
+      expect(json["concert_predictions"].first).to eq(
+        {
+          "id" => predictions.first.id,
+          "user_id" => predictions.first.user_id,
+          "concert_id" => predictions.first.concert_id,
+          "song_performances" => predictions.first.song_predictions
+          "score" => predictions.first.score
+        }
+      )
+    end
+  end
 end
