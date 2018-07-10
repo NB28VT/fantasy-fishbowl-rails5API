@@ -121,7 +121,7 @@ RSpec.describe "Concert Predictions" do
           "id" => predictions.first.id,
           "user_id" => @user.id,
           "concert_id" => predictions.first.concert_id,
-          "song_performances" => predictions.first.song_predictions
+          "song_predictions" => [],
           "score" => predictions.first.score
         }
       )
@@ -141,7 +141,7 @@ RSpec.describe "Concert Predictions" do
           "id" => predictions.first.id,
           "user_id" => predictions.first.user_id,
           "concert_id" => predictions.first.concert_id,
-          "song_performances" => predictions.first.song_predictions
+          "song_predictions" => [],
           "score" => predictions.first.score
         }
       )
