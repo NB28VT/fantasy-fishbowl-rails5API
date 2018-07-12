@@ -5,5 +5,14 @@ Rails.application.routes.draw do
     collection do
       get :upcoming
     end
+    resources :predictions, only: [:index, :show, :create, :update], controller: "concert_predictions"
   end
+
+  resources :users, only: [:index, :show] do
+    member do
+      get :predictions
+    end
+  end
+
+  resources :songs, only: [:index]
 end
