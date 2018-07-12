@@ -5,12 +5,12 @@ Rails.application.routes.draw do
     collection do
       get :upcoming
     end
-    resources :concert_predictions, only: [:index, :show, :create, :update]
+    resources :predictions, only: [:index, :show, :create, :update], controller: "concert_predictions"
   end
 
   resources :users, only: [:index, :show] do
     member do
-      get :concert_predictions
+      get :predictions
     end
   end
 

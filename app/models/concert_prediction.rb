@@ -2,7 +2,7 @@ class ConcertPrediction < ApplicationRecord
   belongs_to :user
   belongs_to :concert
 
-  has_many :song_predictions, dependent: :destroy
+  has_many :song_predictions, dependent: :destroy, inverse_of: :concert_prediction
   has_many :songs, through: :song_predictions
 
   accepts_nested_attributes_for :song_predictions

@@ -1,11 +1,15 @@
 class ConcertPredictionsController < ApplicationController
+  def index
+    predictions = ConcertPrediction.where(concert_id: params[:concert_id])
+    render json: predictions
+  end
+
   def show
     prediction = ConcertPrediction.find(params[:id])
     render json: prediction
   end
 
   def create
-    # TODO: rebuild with nested attributes!
     concert = Concert.find(params[:concert_id])
     full_params = concert_prediction_params.merge({concert_id: concert.id, user_id: @current_user.id})
     prediction = ConcertPrediction.new(full_params)
