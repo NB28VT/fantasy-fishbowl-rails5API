@@ -23,7 +23,7 @@ class PredictionScorer
 
   def score_song_prediction(song_prediction)
     if correct_set_position?(song_prediction)
-      @score += 5
+      @score += 3
     elsif song_performed?(song_prediction)
       @score += 1
     end

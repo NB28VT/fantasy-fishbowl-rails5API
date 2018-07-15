@@ -36,9 +36,5 @@ RSpec.describe "PredictionScorer" do
 
       expect(PredictionScorer.call(concert_prediction)).to eq(1)
     end
-
-
-
-
   end
 end
