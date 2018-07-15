@@ -1,3 +1,9 @@
+# prediction categories
+PredictionCategory.find_or_create_by(name: "First Set Opener")
+PredictionCategory.find_or_create_by(name: "First Set Closer")
+PredictionCategory.find_or_create_by(name: "Second Set Opener")
+PredictionCategory.find_or_create_by(name: "Second Set Closer")
+PredictionCategory.find_or_create_by(name: "Encore")
 
 # Summer Tour
 Concert.find_or_create_by(show_date: Date.new(2018,7,17), venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV")
