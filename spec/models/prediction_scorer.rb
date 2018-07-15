@@ -17,7 +17,7 @@ RSpec.describe "PredictionScorer" do
         prediction_category: category
       )
 
-      expect(PredictionScorer.call(concert_prediction)).to eq(5)
+      expect(PredictionScorer.call(concert_prediction)).to eq(3)
     end
 
     it "scores a song that was played but not in the predicted position" do
