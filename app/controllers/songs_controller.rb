@@ -5,7 +5,7 @@ class SongsController < ApplicationController
   end
 
   def search
-    @songs = Song.where('name LIKE ?', "%#{params[:query]}%")
-    render json: @songs
+    songs = Song.where('name LIKE ?', '%' + params[:query] + '%')
+    render json: songs
   end
 end
