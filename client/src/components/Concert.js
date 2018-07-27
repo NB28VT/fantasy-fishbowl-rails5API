@@ -20,10 +20,6 @@ class Concert extends Component {
         <h1>{this.state.concertID}</h1>
         <SongSearch authToken={this.props.authToken}/>
       </div>
-
-
-
-
     )
   }
 }

@@ -1,10 +1,4 @@
 import React, {Component} from 'react';
-import {
-  Form,
-  FormGroup,
-  ControlLabel,
-  FormControl
-} from 'react-bootstrap';
 
 class SongSearch extends Component {
   constructor(props) {
@@ -17,15 +11,13 @@ class SongSearch extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // componentWillMount() {
-  //   this.fetchSongs;
-  // }
-
-
   handleChange(event) {
     this.setState(this.setState({value: event.target.value}))
+
     if (this.state.value.length > 2) {
       this.searchSongs();
+    } else {
+      this.setState({songs: []})
     }
   }
 
@@ -45,33 +37,19 @@ class SongSearch extends Component {
 
   render() {
     const songs = this.state.songs.map((song) =>
-      <li key={song.id}>{song.name}</li>
+      <option key={song.id} value={song.name}/>
     );
 
     return(
       <div>
-        <form>
-         <FormGroup controlId="formBasicText">
-           <ControlLabel>Set One Opener</ControlLabel>
-           <FormControl
-             type="text"
-             value={this.state.value}
-             placeholder="Enter Song Name"
-             onChange={this.handleChange}
-           />
-         </FormGroup>
-       </form>
-       <ul>
-         {songs}
-       </ul>
-
+        <input type="text" list="songlist" value={this.state.value} onChange={this.handleChange}></input>
+        <datalist id="songlist">
+          {songs}
+        </datalist>
       </div>
-
     )
+
   }
 }
-
-
-
 
 export default SongSearch;

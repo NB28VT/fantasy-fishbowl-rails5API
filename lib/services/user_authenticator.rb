@@ -16,7 +16,7 @@ module Services
 
     def get_user
       user = User.find_by(email: @email)
-      return user if user && user.authenticate(@password)
+      return user.authenticate(@password)
       return nil
     end
   end
