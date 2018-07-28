@@ -29,4 +29,14 @@ RSpec.describe "Songs", type: :request do
       )
     end
   end
+
+  describe "GET /songs/search" do
+    it "returns song results" do
+      song = create(:song, name: "Seagulls Stop It Now")
+
+      get "/songs/search", params: {query: "Seagulls"}, headers: {Authorization: @token}
+
+      expect(json["songs"].first["name"]).to eq(song.name)
+    end
+  end
 end
