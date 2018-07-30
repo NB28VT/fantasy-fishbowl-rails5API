@@ -71,7 +71,6 @@ class App extends Component {
         <Router>
           <div>
             {/* TODO: navbar here */}
-            {/* include logout functionality as well */}
             <ul>
               {/* <li><Link to="/concerts/upcoming">Upcoming Shows</Link></li> */}
               <li><Link to="/concerts">Shows</Link></li>
