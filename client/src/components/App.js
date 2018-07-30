@@ -7,6 +7,9 @@ import {
 } from 'react-router-dom';
 import Login from './Login';
 import Concerts from './Concerts';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -36,13 +39,30 @@ class App extends Component {
     super(props)
     this.state = {
       authToken: ""
-    };
+    }
+
     this.loginUser = this.loginUser.bind(this)
+    this.logoutUser = this.logoutUser.bind(this)
   }
 
-  loginUser(token) {
-    this.setState({authToken: token})
+  componentWillMount(){
+    let authToken = cookies.get("token");
+    if (typeof authToken !== 'undefined') {
+      this.setState({authToken: authToken})
+      authTracker.loggedIn = true;
+    }
+  }
+
+  loginUser(authToken) {
+    this.setState({authToken})
+    cookies.set("token", authToken, {path: "/"})
     authTracker.loggedIn = true;
+  }
+
+  logoutUser() {
+    cookies.remove("token", {path: "/"})
+    this.setState({authToken: ""})
+    authTracker.loggedIn = false;
   }
 
   render() {
@@ -51,9 +71,11 @@ class App extends Component {
         <Router>
           <div>
             {/* TODO: navbar here */}
+            {/* include logout functionality as well */}
             <ul>
               {/* <li><Link to="/concerts/upcoming">Upcoming Shows</Link></li> */}
               <li><Link to="/concerts">Shows</Link></li>
+              <li onClick={this.logoutUser}>Logout</li>
               {/* <li><Link to="/login">Login</Link></li> */}
             </ul>
               <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken}></PrivateRoute>
