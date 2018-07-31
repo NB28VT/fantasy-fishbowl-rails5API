@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import Login from './Login';
 import Concerts from './Concerts';
+import NavBar from './NavBar'
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
@@ -70,20 +71,22 @@ class App extends Component {
       <div >
         <Router>
           <div>
-            {/* TODO: navbar here */}
-            <ul>
-              {/* <li><Link to="/concerts/upcoming">Upcoming Shows</Link></li> */}
-              <li><Link to="/concerts">Shows</Link></li>
-              <li onClick={this.logoutUser}>Logout</li>
-              {/* <li><Link to="/login">Login</Link></li> */}
-            </ul>
-              <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken}></PrivateRoute>
-              <Route path="/login" render={(props) => <Login loginUser={this.loginUser}/>}></Route>
+            <NavBar logoutUser={this.logoutUser}></NavBar>
+            <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken}></PrivateRoute>
+            <Route path="/login" render={(props) => <Login loginUser={this.loginUser}/>}></Route>
           </div>
+
         </Router>
       </div>
     );
   }
 }
+{/* TODO: navbar here */}
+{/* <ul> */}
+  {/* <li><Link to="/concerts/upcoming">Upcoming Shows</Link></li> */}
+  // <li><Link to="/concerts">Shows</Link></li>
+  // <li onClick={this.logoutUser}>Logout</li>
+  {/* <li><Link to="/login">Login</Link></li> */}
+// </ul>
 
 export default App;
