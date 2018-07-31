@@ -51,13 +51,10 @@ class Login extends Component {
   }
 
   render() {
-    // Props location not being passed. Default to main route for now
-    // const { from } = this.props.location || { from: { pathname: '/' } }
-    // const { redirectToReferrer } = this.state;
-
+    // Hardcode homepage redirect
     if (this.state.redirectToReferrer) {
       return(
-        <Redirect to={"/"}/>
+        <Redirect to="/"/>
       )
     }
 

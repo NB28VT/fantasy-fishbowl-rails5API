@@ -4,10 +4,30 @@ import {
   Nav,
   NavItem
 } from 'react-bootstrap';
-import Link from 'react-router-dom';
+import { LinkContainer } from "react-router-bootstrap";
+
+
+const NavLinks = (props) => {
+  if (props.loggedIn === true) {
+    return(
+      <Nav>
+        <NavItem onSelect={props.logoutUser}>Log Out</NavItem>
+      </Nav>
+    )
+  }
+
+  return (
+    <Nav>
+      <LinkContainer to="/login">
+        <NavItem>Log In</NavItem>
+      </LinkContainer>
+    </Nav>
+  )
+}
 
 const NavBar = (props) => {
   return(
+
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
@@ -16,14 +36,8 @@ const NavBar = (props) => {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
-        <Nav>
-          <NavItem eventKey={1}></NavItem>
-          <NavItem eventKey={2} href="#">
-            Link
-          </NavItem>
-        </Nav>
+        <NavLinks logoutUser={props.logoutUser} loggedIn={props.loggedIn}/>
         <Nav pullRight>
-
         </Nav>
       </Navbar.Collapse>
     </Navbar>
