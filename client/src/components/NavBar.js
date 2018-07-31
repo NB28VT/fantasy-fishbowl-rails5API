@@ -7,7 +7,6 @@ import {
 import { LinkContainer } from "react-router-bootstrap";
 import horizontalLogo from "../images/yellow-logo-horizontal.png"
 
-
 const NavLinks = (props) => {
   if (props.loggedIn === true) {
     return(
@@ -28,7 +27,6 @@ const NavLinks = (props) => {
 
 const NavBar = (props) => {
   return(
-
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>

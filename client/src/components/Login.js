@@ -14,8 +14,8 @@ import vertLogo from "../images/yellow-logo-vertical.png"
 const WelcomeMessage = () => {
   return(
     <div className="welcome-message">
-      <h1>Welcome To</h1>
       <img width="100%" src={vertLogo}></img>
+      <p>The Setlist Prediction Game</p>
     </div>
   )
 }
@@ -74,18 +74,12 @@ class Login extends Component {
         <WelcomeMessage />
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
-            <Col componentClass={ControlLabel} sm={2}>
-              Email
-            </Col>
             <Col sm={10}>
               <FormControl type="email" placeholder="Email" name="email" onChange={this.updateEmail} value={this.state.email}/>
             </Col>
           </FormGroup>
 
           <FormGroup controlId="formHorizontalPassword">
-            <Col componentClass={ControlLabel} sm={2}>
-              Password
-            </Col>
             <Col sm={10}>
               <FormControl type="password" placeholder="Password" name="password" onChange={this.updatePassword} value={this.state.password}/>
             </Col>
@@ -93,14 +87,11 @@ class Login extends Component {
 
           <FormGroup>
             <Col smOffset={2} sm={10}>
-              <Button type="submit">Sign in</Button>
+              <Button className ="sign-in-button" type="submit">Log In</Button>
             </Col>
           </FormGroup>
         </Form>
       </div>
-
-
-
     )
   }
 }
