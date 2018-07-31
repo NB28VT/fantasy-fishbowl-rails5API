@@ -1,0 +1,6 @@
+.main-content, body{
+  background: url("../images/nb-super-fade.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}

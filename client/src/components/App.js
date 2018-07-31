@@ -9,6 +9,7 @@ import Login from './Login';
 import Concerts from './Concerts';
 import NavBar from './NavBar'
 import Cookies from 'universal-cookie';
+import '../stylesheets/app.css';
 
 const cookies = new Cookies();
 
@@ -66,7 +67,7 @@ class App extends Component {
 
   render() {
     return (
-      <div >
+      <div className="main-content">
         <Router>
           <div>
             <NavBar logoutUser={this.logoutUser} loggedIn={this.state.loggedIn}></NavBar>

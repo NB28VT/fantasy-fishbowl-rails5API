@@ -1,0 +1,17 @@
+/* logo hex:
+purps:
+#CB0DFA
+#9B18C7
+yellow:
+#F5ED13
+ */
+
+.login-content {
+  margin-left: 12%;
+  margin-right: 12%;
+  margin-top:20%;
+}
+
+.control-label {
+  color: red;
+}

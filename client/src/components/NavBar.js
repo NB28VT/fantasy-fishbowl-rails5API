@@ -5,6 +5,7 @@ import {
   NavItem
 } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
+import horizontalLogo from "../images/yellow-logo-horizontal.png"
 
 
 const NavLinks = (props) => {
@@ -31,7 +32,7 @@ const NavBar = (props) => {
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href="#brand">React-Bootstrap</a>
+          <a><img src={horizontalLogo} height="100%"/></a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
