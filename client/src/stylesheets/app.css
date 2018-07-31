@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+/* logo hex:
+purps:
+#CB0DFA
+#9B18C7
+yellow:
+#F5ED13
+ */
+
 .main-content, body{
   background: url("../images/nb-super-fade.jpg");
   background-position: center;

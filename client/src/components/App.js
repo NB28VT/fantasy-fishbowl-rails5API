@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Redirect,
-  withRouter
+  Redirect
 } from 'react-router-dom';
 import Login from './Login';
 import Concerts from './Concerts';
