@@ -8,6 +8,17 @@ import {
   FormControl,
   Button
 } from 'react-bootstrap';
+import "../stylesheets/login.css"
+import vertLogo from "../images/yellow-logo-vertical.png"
+
+const WelcomeMessage = () => {
+  return(
+    <div className="welcome-message">
+      <img width="100%" src={vertLogo}></img>
+      <p>The Setlist Prediction Game</p>
+    </div>
+  )
+}
 
 class Login extends Component {
   constructor(props) {
@@ -51,42 +62,36 @@ class Login extends Component {
   }
 
   render() {
-    // Props location not being passed. Default to main route for now
-    // const { from } = this.props.location || { from: { pathname: '/' } }
-    // const { redirectToReferrer } = this.state;
-
+    // Hardcode homepage redirect
     if (this.state.redirectToReferrer) {
       return(
-        <Redirect to={"/"}/>
+        <Redirect to="/"/>
       )
     }
 
     return(
-      <Form horizontal onSubmit={this.handleSubmit}>
-        <FormGroup controlId="formHorizontalEmail">
-          <Col componentClass={ControlLabel} sm={2}>
-            Email
-          </Col>
-          <Col sm={10}>
-            <FormControl type="email" placeholder="Email" name="email" onChange={this.updateEmail} value={this.state.email}/>
-          </Col>
-        </FormGroup>
+      <div className="login-content">
+        <WelcomeMessage />
+        <Form horizontal onSubmit={this.handleSubmit}>
+          <FormGroup controlId="formHorizontalEmail">
+            <Col sm={10}>
+              <FormControl type="email" placeholder="Email" name="email" onChange={this.updateEmail} value={this.state.email}/>
+            </Col>
+          </FormGroup>
 
-        <FormGroup controlId="formHorizontalPassword">
-          <Col componentClass={ControlLabel} sm={2}>
-            Password
-          </Col>
-          <Col sm={10}>
-            <FormControl type="password" placeholder="Password" name="password" onChange={this.updatePassword} value={this.state.password}/>
-          </Col>
-        </FormGroup>
+          <FormGroup controlId="formHorizontalPassword">
+            <Col sm={10}>
+              <FormControl type="password" placeholder="Password" name="password" onChange={this.updatePassword} value={this.state.password}/>
+            </Col>
+          </FormGroup>
 
-        <FormGroup>
-          <Col smOffset={2} sm={10}>
-            <Button type="submit">Sign in</Button>
-          </Col>
-        </FormGroup>
-      </Form>
+          <FormGroup>
+            <Col smOffset={2} sm={10}>
+              <Button className ="sign-in-button" type="submit">Log In</Button>
+            </Col>
+          </FormGroup>
+        </Form>
+      </div>
     )
   }
 }

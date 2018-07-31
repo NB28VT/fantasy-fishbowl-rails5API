@@ -1,0 +1,25 @@
+.login-content {
+  margin-left: 12%;
+  margin-right: 12%;
+  margin-top:20%;
+  color: #F5ED13;
+}
+
+.welcome-message {
+  margin-bottom: 10%;
+}
+
+.welcome-message, p {
+  margin-top: 30px;
+  color: #F5ED13;
+  text-align: center;
+  font-size: 20px;
+}
+
+.sign-in-button {
+  width: 100%;
+  height: 50px;
+  background-color: #CB0DFA;
+  color: #F5ED13;
+  font-size: 25px;
+}
