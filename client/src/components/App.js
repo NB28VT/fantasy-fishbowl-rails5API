@@ -4,11 +4,13 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+import '../stylesheets/app.css';
+
 import Login from './Login';
 import Concerts from './Concerts';
 import NavBar from './NavBar'
-import Cookies from 'universal-cookie';
-import '../stylesheets/app.css';
+import Dashboard from "./Dashboard";
 
 const cookies = new Cookies();
 
@@ -71,6 +73,7 @@ class App extends Component {
           <div>
             <NavBar logoutUser={this.logoutUser} loggedIn={this.state.loggedIn}></NavBar>
             <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
+            <PrivateRoute exact path="/" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
             <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
           </div>
         </Router>
