@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
+  Switch,
   Redirect
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
@@ -72,8 +73,9 @@ class App extends Component {
         <Router>
           <div>
             <NavBar logoutUser={this.logoutUser} loggedIn={this.state.loggedIn}></NavBar>
+            {/* <PrivateRoute path="/" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute> */}
+            <Route exact path="/" component={Dashboard}/>
             <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
-            <PrivateRoute exact path="/" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
             <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
           </div>
         </Router>

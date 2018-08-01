@@ -4,7 +4,6 @@ import {
   Form,
   FormGroup,
   Col,
-  ControlLabel,
   FormControl,
   Button
 } from 'react-bootstrap';
@@ -14,7 +13,7 @@ import vertLogo from "../images/yellow-logo-vertical.png"
 const WelcomeMessage = () => {
   return(
     <div className="welcome-message">
-      <img width="100%" src={vertLogo}></img>
+      <img alt="logo" width="100%" src={vertLogo}></img>
       <p>The Setlist Prediction Game</p>
     </div>
   )
@@ -48,7 +47,7 @@ class Login extends Component {
     .then((res) => res.json())
     .then((responseData) => {
         this.props.loginUser(responseData["token"]);
-        this.setState({redirectToReferrer: true})
+        this.setState({redirectToReferrer: true});
       }
     )
   }
@@ -62,6 +61,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.state.redirectToReferrer)
     // Hardcode homepage redirect
     if (this.state.redirectToReferrer) {
       return(

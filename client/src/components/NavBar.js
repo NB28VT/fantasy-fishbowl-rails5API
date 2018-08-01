@@ -30,7 +30,7 @@ const NavBar = (props) => {
     <Navbar inverse collapseOnSelect>
       <Navbar.Header>
         <Navbar.Brand>
-          <a><img src={horizontalLogo} height="100%"/></a>
+          <a><img alt="logo" src={horizontalLogo} height="100%"/></a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
