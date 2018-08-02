@@ -39,9 +39,11 @@ class App extends Component {
 
     this.loginUser = this.loginUser.bind(this)
     this.logoutUser = this.logoutUser.bind(this)
+
+    this.checkCookie = this.checkCookie.bind(this)
   }
 
-  componentWillMount(){
+  checkCookie() {
     let authToken = cookies.get("token");
     if (typeof authToken !== 'undefined') {
       this.setState({
@@ -51,12 +53,17 @@ class App extends Component {
     }
   }
 
+  componentWillMount(){
+    this.checkCookie();
+  }
+
   loginUser(authToken) {
     this.setState({
       authToken: authToken,
       loggedIn: true
     })
     cookies.set("token", authToken, {path: "/"})
+    console.log("Logged in");
   }
 
   logoutUser() {
@@ -73,8 +80,7 @@ class App extends Component {
         <Router>
           <div>
             <NavBar logoutUser={this.logoutUser} loggedIn={this.state.loggedIn}></NavBar>
-            {/* <PrivateRoute path="/" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute> */}
-            <Route exact path="/" component={Dashboard}/>
+            <PrivateRoute exact path="/" loggedIn={this.state.loggedIn} component={Dashboard}></PrivateRoute>
             <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
             <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
           </div>

@@ -7,8 +7,12 @@ import {
   FormControl,
   Button
 } from 'react-bootstrap';
+import Cookies from 'universal-cookie';
+
 import "../stylesheets/login.css"
 import vertLogo from "../images/yellow-logo-vertical.png"
+
+const cookies = new Cookies();
 
 const WelcomeMessage = () => {
   return(
@@ -46,6 +50,8 @@ class Login extends Component {
     })
     .then((res) => res.json())
     .then((responseData) => {
+        // this.setCookie(responseData["token"])
+
         this.props.loginUser(responseData["token"]);
         this.setState({redirectToReferrer: true});
       }
@@ -60,8 +66,11 @@ class Login extends Component {
     this.setState({password: event.target.value})
   }
 
+  // setCookie(token) {
+  //   cookies.set("token", token, {path: "/"})
+  // }
+
   render() {
-    console.log(this.state.redirectToReferrer)
     // Hardcode homepage redirect
     if (this.state.redirectToReferrer) {
       return(
