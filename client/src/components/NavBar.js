@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
   Navbar,
   Nav,
   NavItem
 } from 'react-bootstrap';
+import {withRouter} from 'react-router-dom'
 import { LinkContainer } from "react-router-bootstrap";
 import horizontalLogo from "../images/yellow-logo-horizontal.png"
 
@@ -25,23 +26,36 @@ const NavLinks = (props) => {
   )
 }
 
-const NavBar = (props) => {
-  return(
-    <Navbar inverse collapseOnSelect>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <a><img src={horizontalLogo} height="100%"/></a>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
-        <NavLinks logoutUser={props.logoutUser} loggedIn={props.loggedIn}/>
-        <Nav pullRight>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  )
+class NavBar extends Component {
+  constructor(props) {
+    super(props)
+
+    this.logoutUser = this.logoutUser.bind(this);
+  }
+
+  logoutUser() {
+    this.props.logoutUser();
+    this.props.history.push('/login');
+  }
+
+  render(){
+    return(
+      <Navbar inverse collapseOnSelect>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <a><img alt="logo" src={horizontalLogo} height="100%"/></a>
+          </Navbar.Brand>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <NavLinks logoutUser={this.logoutUser} loggedIn={this.props.loggedIn}/>
+          <Nav pullRight>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    )
+  }
 }
 
 
-export default NavBar;
+export default withRouter(NavBar);
