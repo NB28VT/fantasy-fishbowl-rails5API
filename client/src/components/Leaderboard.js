@@ -41,7 +41,7 @@ class Leaderboard extends Component {
 
   render() {
     const rankingsTable = this.state.rankingsData.map((user) =>
-      <tr>
+      <tr key={user.rank}>
         <td>{user.rank}</td>
         <td>{user.user_name}</td>
         <td></td>

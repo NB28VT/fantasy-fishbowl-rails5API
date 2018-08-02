@@ -7,12 +7,12 @@ import {
   FormControl,
   Button
 } from 'react-bootstrap';
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
 
 import "../stylesheets/login.css"
 import vertLogo from "../images/yellow-logo-vertical.png"
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 
 const WelcomeMessage = () => {
   return(
