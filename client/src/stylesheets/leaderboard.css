@@ -1,8 +1,10 @@
 .leaderboard {
   background-color: white;
   color: black;
+  padding: 3px;
 }
 
 .leaderboard h1 {
   font-size: 20px;
+  text-align: center;
 }

@@ -8,7 +8,7 @@ yellow:
 #F5ED13
  */
 
-.main-content, body{
+.app, body{
   background: url("../images/nb-super-fade.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -16,4 +16,8 @@ yellow:
   color: #F5ED13;
 
   font-family: 'Open Sans', sans-serif;
+}
+
+.inner-content {
+  padding: 3%;
 }

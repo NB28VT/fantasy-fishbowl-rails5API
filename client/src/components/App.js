@@ -75,15 +75,17 @@ class App extends Component {
 
   render() {
     return (
-      <div className="main-content">
+      <div className="app">
         <Router>
           <div>
             <NavBar logoutUser={this.logoutUser} loggedIn={this.state.loggedIn}></NavBar>
             {/* <PrivateRoute exact path="/" loggedIn={this.state.loggedIn} component={Dashboard}></PrivateRoute> */}
             {/*  TODO: make this a private route*/}
-            <Route path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
-            <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
-            <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
+            <div className="inner-content">
+              <Route path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
+              <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
+              <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
+            </div>
           </div>
         </Router>
       </div>
