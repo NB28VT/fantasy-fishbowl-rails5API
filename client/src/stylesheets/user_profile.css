@@ -1,0 +1,15 @@
+.user-info h1 {
+  font-size: 200%;
+}
+
+.user-info h2 {
+  font-size: 100%;
+}
+
+.avatar-image {
+  width: 40%;
+}
+
+.avatar-image img {
+  max-width: 100%;
+}

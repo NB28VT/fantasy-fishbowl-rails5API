@@ -80,7 +80,9 @@ class App extends Component {
         <Router>
           <div>
             <NavBar logoutUser={this.logoutUser} loggedIn={this.state.loggedIn}></NavBar>
-            <PrivateRoute exact path="/" loggedIn={this.state.loggedIn} component={Dashboard}></PrivateRoute>
+            {/* <PrivateRoute exact path="/" loggedIn={this.state.loggedIn} component={Dashboard}></PrivateRoute> */}
+            {/*  TODO: make this a private route*/}
+            <Route path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
             <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
             <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
           </div>
