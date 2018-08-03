@@ -1,11 +1,25 @@
 .concert-thumbnail {
   padding-top: 20px;
+  height: 20px;
 }
 
+.concert-thumbnail img {
+  max-height: 300px;
+}
+/*
+.container {
+  max-height: 10px;
+} */
+
 .concert-thumbnail h1 {
-  font-size: 18px;
+  font-size: 125%;
 }
 
 .concert-thumbnail h2 {
-  font-size: 12px;
+  font-size: 100%;
+}
+
+.concert-header {
+  text-align: center;
+  max-height: 100%;
 }

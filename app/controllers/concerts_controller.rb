@@ -1,4 +1,6 @@
 class ConcertsController < ApplicationController
+  skip_before_action :authenticate_request
+
   def index
     concerts = Concert.all.order("show_date ASC")
     render json: concerts, each_serializer: ConcertIndexSerializer
