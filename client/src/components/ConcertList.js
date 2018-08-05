@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {Grid} from 'react-bootstrap';
+import '../stylesheets/concert_list.css';
 
 import ConcertThumbnail from "./ConcertThumbnail";
 
@@ -51,7 +52,9 @@ class ConcertList extends Component {
 
     return(
       <div>
-        <ConcertHeader/>
+        <div className="concert-header">
+          <ConcertHeader/>
+        </div>
         <Grid>
           {concerts}
         </Grid>

@@ -12,19 +12,17 @@ class ConcertThumbnail extends Component {
 
   render() {
     return(
-      // <div className="concert-thumbnail">
-        // <Grid>
-          <Row className="concert-thumbnail">
-            <Col xs={4} md={8}>
-              <img className="img-responsive" alt="venue" src={this.props.venueImage}></img>
+      <div className="concert-thumbnail">
+          <Row>
+            <Col xs={4} md={6}>
+              <img className="thumbnail-image" alt="venue" src={this.props.venueImage}></img>
             </Col>
-            <Col xs={8} md={4}>
+            <Col xs={8} md={6}>
               <h1>{this.props.showDate}</h1>
               <h2>{this.props.venueName}</h2>
             </Col>
           </Row>
-        // </Grid>
-      // </div>
+      </div>
     )
   }
 }
