@@ -9,8 +9,6 @@ class Concerts extends Component {
     return(
       <div>
         <Switch>
-          {/* <Route exact path="/concerts" render={(props) => <ConcertList authToken={this.props.authToken}/>}></Route> */}
-          {/* <Route path= "/concerts/upcoming" component={ConcertList} upcomingOnly={true}></Route> */}
           <Route exact path="/concerts" render={(props) => <ConcertList upcomingOnly={false}/>}></Route>
           <Route path="/concerts/upcoming" render={(props) => <ConcertList upcomingOnly={true}/>}></Route>
           <Route exact path="/concerts/:id" render={(props) => <Concert authToken={this.props.authToken} {...props}/>}></Route>
