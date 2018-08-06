@@ -1,5 +1,4 @@
 .thumbnail-row {
-  /* padding-bottom: 20px; */
   background-color: rgb(203,13,250, 0.2);
   height: 30vw;
   border-radius: 10px;
@@ -10,10 +9,8 @@
   height: 2vw;
 }
 
-
 .image-column {
-    /* height: 20vw; */
-    height: 100%;
+  height: 100%;
 }
 
 .show-info-column {
@@ -28,17 +25,7 @@
   padding-top: 3%;
   padding-bottom: 3%;
   border-radius: 5%;
-
-  /* display: block; */
-  /* vertical-align: middle */
-  /* margin: auto; */
-  /* margin-right: auto; */
-  /* padding: 20px; */
 }
-/*
-.container {
-  max-height: 10px;
-} */
 
 .concert-thumbnail h1 {
   font-size: 4vw;
