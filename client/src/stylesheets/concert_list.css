@@ -1,0 +1,9 @@
+.concert-header {
+  padding-top:  10vw;
+  text-align: center;
+  padding-bottom: 10vw;
+}
+
+.concert-header h1 {
+  font-size: 8vw;
+}

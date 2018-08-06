@@ -40,7 +40,7 @@ class NavBar extends Component {
 
   render(){
     return(
-      <Navbar inverse collapseOnSelect>
+      <Navbar inverse collapseOnSelect fixedTop>
         <Navbar.Header>
           <Navbar.Brand>
             <a><img alt="logo" src={horizontalLogo} height="100%"/></a>

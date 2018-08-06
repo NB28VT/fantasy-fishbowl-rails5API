@@ -1,11 +1,36 @@
-.concert-thumbnail {
-  padding-top: 20px;
+.thumbnail-row {
+  background-color: rgb(203,13,250, 0.2);
+  height: 30vw;
+  border-radius: 10px;
+  border: 1px solid #CB0DFA;
+}
+
+.spacer-row {
+  height: 2vw;
+}
+
+.image-column {
+  height: 100%;
+}
+
+.show-info-column {
+  height: 100%;
+  padding-left: 10%;
+  vertical-align: middle;
+  display: inline-block;;
+}
+
+.thumbnail-image {
+  height: 100%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-radius: 5%;
 }
 
 .concert-thumbnail h1 {
-  font-size: 18px;
+  font-size: 4vw;
 }
 
 .concert-thumbnail h2 {
-  font-size: 12px;
+  font-size: 3vw;
 }

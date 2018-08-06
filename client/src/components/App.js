@@ -83,7 +83,7 @@ class App extends Component {
             {/*  TODO: make this a private route*/}
             <div className="inner-content">
               <Route path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
-              <PrivateRoute path="/concerts" component={Concerts} authToken={this.state.authToken} loggedIn={this.state.loggedIn}></PrivateRoute>
+              <Route path="/concerts" component={Concerts}></Route>
               <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
             </div>
           </div>
