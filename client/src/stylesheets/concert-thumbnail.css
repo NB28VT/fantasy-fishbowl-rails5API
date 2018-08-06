@@ -1,16 +1,36 @@
-.row {
+.thumbnail-row {
   /* padding-bottom: 20px; */
-  background-color: rgb(203,13,250, 0.5);
+  background-color: rgb(203,13,250, 0.2);
   height: 30vw;
   border-radius: 10px;
   border: 1px solid #CB0DFA;
 }
 
+.spacer-row {
+  height: 2vw;
+}
+
+
+.image-column {
+    /* height: 20vw; */
+    height: 100%;
+}
+
+.show-info-column {
+  height: 100%;
+  padding-left: 10%;
+  vertical-align: middle;
+  display: inline-block;;
+}
+
 .thumbnail-image {
-  /* max-height: 100%; */
-  height: 20vw;
-  display: block;
-  vertical-align: middle
+  height: 100%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  border-radius: 5%;
+
+  /* display: block; */
+  /* vertical-align: middle */
   /* margin: auto; */
   /* margin-right: auto; */
   /* padding: 20px; */
