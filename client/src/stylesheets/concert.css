@@ -1,0 +1,29 @@
+.concert {
+  padding-top:  10vw;
+  /* padding-left: 2vw;
+  padding-right: 2vw; */
+}
+
+.prediction {
+  border: 2px solid #CB0DFA;
+}
+
+.prediction h1 {
+  font-size: 8vw;
+  text-align: center;
+}
+
+.concert-info h1 {
+  font-size: 8vw;
+  text-align: center;
+}
+
+.concert-info p {
+  font-size: 3vw;
+}
+
+.concert-info {
+  border: 2px solid #CB0DFA;
+  /* position: fixed;
+  bottom: 0; */
+}

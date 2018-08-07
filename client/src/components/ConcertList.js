@@ -39,7 +39,7 @@ class ConcertList extends Component {
 
   render() {
     const concerts = this.state.concerts.map((concert) =>
-      <ConcertThumbnail key={concert.id} venueName={concert.venue_name} showDate={concert.show_date} venueImage={venueImage}/>
+      <ConcertThumbnail key={concert.id} id={concert.id} venueName={concert.venue_name} showDate={concert.show_date} venueImage={venueImage}/>
     );
 
     const ConcertHeader = () => {
