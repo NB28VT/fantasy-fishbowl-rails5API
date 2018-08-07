@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import SongSearch from './SongSearch'
 import ConcertThumbnail from "./ConcertThumbnail"
 import PredictionForm from "./PredictionForm"
-// import Leaderboard from "./Leaderboard"
-// import SetList from "./SetList"
+import Leaderboard from "./Leaderboard"
+import SetList from "./SetList"
 
 import '../stylesheets/concert.css';
 import venueImage from "../images/alpharetta-venue-image.jpg"

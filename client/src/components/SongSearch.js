@@ -24,8 +24,7 @@ class SongSearch extends Component {
   searchSongs() {
     fetch("/songs/search?query=" + this.state.value, {
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": this.props.authToken
+        "Content-Type": "application/json"
       }
     })
     .then((res) => res.json())

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :prediction_categories, only: [:index]
+
   resources :songs, only: [:index] do
     collection do
       get :search
