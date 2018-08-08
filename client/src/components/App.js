@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import '../stylesheets/app.css';
@@ -14,19 +13,19 @@ import Dashboard from "./Dashboard";
 
 const cookies = new Cookies();
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      props.loggedIn? (
-        <Component {...props} {...rest} />
-      ) : (
-        <Redirect to={{pathname: "/login"}}
-        />
-      )
-    }
-  />
-);
+// const PrivateRoute = ({ component: Component, ...rest }) => (
+//   <Route
+//     {...rest}
+//     render={props =>
+//       props.loggedIn? (
+//         <Component {...props} {...rest} />
+//       ) : (
+//         <Redirect to={{pathname: "/login"}}
+//         />
+//       )
+//     }
+//   />
+// );
 
 class App extends Component {
   constructor(props) {

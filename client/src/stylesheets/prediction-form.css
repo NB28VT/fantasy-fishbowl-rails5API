@@ -1,0 +1,14 @@
+.prediction-form {
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+.prediction-form input {
+  width: 100%;
+  height: 8vw;
+  border-radius: 5px;
+}
+
+.prediction-category {
+  padding-bottom: 3vw;
+}

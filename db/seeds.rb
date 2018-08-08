@@ -1,9 +1,9 @@
 # prediction categories
-PredictionCategory.find_or_create_by(name: "First Set Opener")
-PredictionCategory.find_or_create_by(name: "First Set Closer")
-PredictionCategory.find_or_create_by(name: "Second Set Opener")
-PredictionCategory.find_or_create_by(name: "Second Set Closer")
-PredictionCategory.find_or_create_by(name: "Encore")
+PredictionCategory.find_or_create_by(name: "First Set Opener", set_number: 1, setlist_position: 0)
+PredictionCategory.find_or_create_by(name: "First Set Closer", set_number: 1, setlist_position: -1)
+PredictionCategory.find_or_create_by(name: "Second Set Opener", set_number: 2, setlist_position: 0)
+PredictionCategory.find_or_create_by(name: "Second Set Closer", set_number: 2, setlist_position: -1)
+PredictionCategory.find_or_create_by(name: "Encore", set_number: 3, setlist_position: 0)
 
 # Summer Tour
 Concert.find_or_create_by(show_date: Date.new(2018,7,17), venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV")

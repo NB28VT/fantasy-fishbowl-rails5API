@@ -24,8 +24,7 @@ class SongSearch extends Component {
   searchSongs() {
     fetch("/songs/search?query=" + this.state.value, {
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": this.props.authToken
+        "Content-Type": "application/json"
       }
     })
     .then((res) => res.json())
@@ -40,10 +39,12 @@ class SongSearch extends Component {
       <option key={song.id} value={song.name}/>
     );
 
+    const listID = "songlist-" + this.props.categoryName;
+
     return(
       <div>
-        <input type="text" list="songlist" value={this.state.value} onChange={this.handleChange}></input>
-        <datalist id="songlist">
+        <input type="text" list={listID} value={this.state.value} onChange={this.handleChange}></input>
+        <datalist id={listID}>
           {songs}
         </datalist>
       </div>
