@@ -3,11 +3,11 @@ import {
   Form,
   FormGroup,
   Col,
-  FormControl,
   ControlLabel,
   Button
 } from 'react-bootstrap';
 import SongSearch from "./SongSearch";
+import "../stylesheets/prediction-form.css"
 
 class PredictionForm extends Component {
   constructor(props) {
@@ -28,36 +28,19 @@ class PredictionForm extends Component {
         predictionCategories: responseData["prediction_categories"]
       })
     })
-
-    // this.fetchPredictionCategories();
   }
-
-  // fetchPredictionCategories() {
-  //   fetch("/prediction_categories",{
-  //     headers: {"Content-Type": "application/json"}
-  //   })
-  //   .then((res) => res.json())
-  //   .then((responseData) => {
-  //     // TODO: error handling
-  //     this.setState({
-  //       predictionCategories: responseData["prediction_categories"]
-  //     })
-  //   })
-  // }
-
 
   render() {
     const categories = this.state.predictionCategories.map((category) =>
-      <Col sm={10}>
+      <Col className="prediction-category" key={category.id} sm={10} >
         <ControlLabel>{category.name}</ControlLabel>
-        <SongSearch/>
-        {/* <FormControl label="test" type="text" placeholder="Enter Song" name={category.id}/> */}
+        <SongSearch categoryName={category.name}/>
       </Col>
     )
 
     return(
-      <Form horizontal>
-        <FormGroup controlId="formHorizontalEmail">
+      <Form horizontal className="prediction-form">
+        <FormGroup>
           {categories}
         </FormGroup>
 
@@ -69,7 +52,6 @@ class PredictionForm extends Component {
       </Form>
     )
   }
-
 }
 
 export default PredictionForm;

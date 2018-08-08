@@ -1,7 +1,5 @@
-.concert {
-  padding-top:  10vw;
-  /* padding-left: 2vw;
-  padding-right: 2vw; */
+.concert-page {
+  padding-top: 10vw;
 }
 
 .prediction {
@@ -9,12 +7,16 @@
 }
 
 .prediction h1 {
-  font-size: 8vw;
+  font-size: 6vw;
   text-align: center;
 }
 
+.prediction input {
+  color: black;
+}
+
 .concert-info h1 {
-  font-size: 8vw;
+  font-size: 6vw;
   text-align: center;
 }
 

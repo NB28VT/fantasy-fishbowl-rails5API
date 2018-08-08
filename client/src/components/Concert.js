@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import SongSearch from './SongSearch'
 import ConcertThumbnail from "./ConcertThumbnail"
 import PredictionForm from "./PredictionForm"
 import Leaderboard from "./Leaderboard"
@@ -80,18 +79,18 @@ class Concert extends Component {
     }
 
     return(
-      <div className="concert">
-        <ConcertThumbnail id={this.state.concert.id} venueName={this.state.concert.venue_name} showDate={this.state.concert.show_date} venueImage={venueImage}/>
+      <div className="concert-page">
+        <div className="concert-thumbnail">
+          <ConcertThumbnail id={this.state.concert.id} venueName={this.state.concert.venue_name} showDate={this.state.concert.show_date} venueImage={venueImage}/>
+        </div>
         <div className="prediction">
           <h1>My Prediction</h1>
           <PredictionInformation />
         </div>
-        <div className="concert-info">
+        {/* <div className="concert-info">
           <h1>Concert Info</h1>
           <ConcertInformation />
-        </div>
-
-        {/* <SongSearch authToken={this.props.authToken}/> */}
+        </div> */}
       </div>
     )
   }
