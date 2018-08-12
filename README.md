@@ -12,6 +12,9 @@ Fantasy Fishbowl is a work in progress fantasy sports-style app for competing wi
 * An autocomplete interface for searching songs built in React
 
 ## Screenshots
-<img src="lib/screenshots/landing-page.png" width="32%; padding-right: 2%">
-<img src="lib/screenshots/show-list.png" width="32%; padding-right: 2%">
-<img src="lib/screenshots/prediction.png" width="32%;">
+
+<p float="left">
+  <img src="lib/screenshots/landing-page.png" width="32%;">
+  <img src="lib/screenshots/show-list.png" width="32%;">
+  <img src="lib/screenshots/prediction.png" width="32%;">
+</p>
