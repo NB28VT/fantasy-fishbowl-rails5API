@@ -12,8 +12,7 @@ class Concert extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      concert: [],
-      loggedIn: true
+      concert: []
     }
   }
   componentDidMount() {
@@ -54,7 +53,7 @@ class Concert extends Component {
 
     const NewPrediction = () => {
       // TODO: tie to this.props.logged in
-      if (this.state.loggedIn) {
+      if (this.props.loggedIn) {
         return(<PredictionForm userID={this.props.userID} concertID={this.state.concert.id}/>)
       } else {
         return (<NewUserMessage/>)
@@ -63,7 +62,7 @@ class Concert extends Component {
 
     const PredictionResult = () => {
       // TODO: tie to this.props.logged in
-      if (this.state.loggedIn) {
+      if (this.props.loggedIn) {
         return(<p>Prediction Result</p> )
       } else {
         return(<NewUserMessage/>)

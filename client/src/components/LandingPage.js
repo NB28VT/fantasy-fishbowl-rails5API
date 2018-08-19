@@ -8,6 +8,8 @@ class LandingPage extends Component {
     return(
       <div className="landing-page-content">
         <WelcomeLogo />
+        <p>Fantasy Fishbowl is currently under construction.</p>
+        <p>Please contact burgess.nathan28@gmail.com for inquiries about obtaining a login.</p>
       </div>
     )
   }

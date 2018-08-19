@@ -16,11 +16,11 @@ import LandingPage from "./LandingPage";
 
 const cookies = new Cookies();
 
-const PrivateRoute = ({ component: Component, authenticated, ...rest }) => (
+const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      authenticated === true ? (
+      loggedIn === true ? (
         <Component {...rest} {...props}  />
       ) : (
         <Redirect to={{pathname: "/login"}}
@@ -91,8 +91,8 @@ class App extends Component {
                 )
               )}/>
 
-              <PrivateRoute path="/home" component={Dashboard} authToken={this.state.authToken} authenticated={this.state.loggedIn}/>
-              <Route path="/concerts" component={Concerts}/>
+              <PrivateRoute path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
+              <Route path="/concerts" render={(props) => <Concerts {...props} loggedIn={this.props.loggedIn} />}/>
               <Route path="/leaderboard" component={TourRankings}/>
               <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}/>
             </div>

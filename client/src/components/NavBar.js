@@ -12,6 +12,9 @@ const LoginLinks = (props) => {
   if (props.loggedIn === true) {
     return(
       <Nav>
+        <LinkContainer to="/home">
+          <NavItem>My Profile</NavItem>
+        </LinkContainer>
         <NavItem onSelect={props.logoutUser}>Log Out</NavItem>
       </Nav>
     )
