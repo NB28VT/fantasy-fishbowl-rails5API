@@ -1,0 +1,10 @@
+.welcome-message {
+  margin-bottom: 10%;
+}
+
+.welcome-message, p {
+  margin-top: 30px;
+  color: #F5ED13;
+  text-align: center;
+  font-size: 20px;
+}

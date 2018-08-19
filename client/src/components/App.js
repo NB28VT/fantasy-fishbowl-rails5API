@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Redirect
 } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import '../stylesheets/app.css';
@@ -11,22 +12,23 @@ import Concerts from './Concerts';
 import NavBar from './NavBar';
 import Dashboard from "./Dashboard";
 import TourRankings from "./TourRankings";
+import LandingPage from "./LandingPage";
 
 const cookies = new Cookies();
 
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route
-//     {...rest}
-//     render={props =>
-//       props.loggedIn? (
-//         <Component {...props} {...rest} />
-//       ) : (
-//         <Redirect to={{pathname: "/login"}}
-//         />
-//       )
-//     }
-//   />
-// );
+const PrivateRoute = ({ component: Component, loggedIn, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      loggedIn === true ? (
+        <Component {...rest} {...props}  />
+      ) : (
+        <Redirect to={{pathname: "/login"}}
+        />
+      )
+    }
+  />
+);
 
 class App extends Component {
   constructor(props) {
@@ -78,14 +80,21 @@ class App extends Component {
       <div className="app">
         <Router>
           <div>
-            <NavBar logoutUser={this.logoutUser} loggedIn={this.state.loggedIn}></NavBar>
-            {/* <PrivateRoute exact path="/" loggedIn={this.state.loggedIn} component={Dashboard}></PrivateRoute> */}
-            {/*  TODO: make this a private route*/}
+            <NavBar logoutUser={this.logoutUser} loggedIn={this.state.loggedIn}/>
             <div className="inner-content">
-              <Route path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
-              <Route path="/concerts" component={Concerts}></Route>
-              <Route path="/leaderboard" component={TourRankings}></Route>
-              <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
+
+              <Route exact path="/" render={() => (
+                this.state.loggedIn ? (
+                  <Redirect to="/home"/>
+                ) : (
+                  <LandingPage/>
+                )
+              )}/>
+
+              <PrivateRoute path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
+              <Route path="/concerts" render={(props) => <Concerts {...props} loggedIn={this.props.loggedIn} />}/>
+              <Route path="/leaderboard" component={TourRankings}/>
+              <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}/>
             </div>
           </div>
         </Router>

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Grid} from 'react-bootstrap';
-import '../stylesheets/concert_list.css';
+import '../stylesheets/concert-list.css';
 import ConcertThumbnail from "./ConcertThumbnail";
 
 // todo: load via API, use webpack:

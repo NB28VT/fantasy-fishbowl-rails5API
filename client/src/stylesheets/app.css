@@ -19,5 +19,7 @@ yellow:
 }
 
 .inner-content {
-  padding: 3%;
+  padding-top: 10vw;
+  padding-left: 3%;
+  padding-right: 3%;
 }

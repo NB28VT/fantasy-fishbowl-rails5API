@@ -11,22 +11,25 @@ import horizontalLogo from "../images/yellow-logo-horizontal.png"
 const LoginLinks = (props) => {
   if (props.loggedIn === true) {
     return(
+      <Nav>
+        <LinkContainer to="/home">
+          <NavItem>My Profile</NavItem>
+        </LinkContainer>
         <NavItem onSelect={props.logoutUser}>Log Out</NavItem>
+      </Nav>
     )
   }
 
   return (
+    // need top level Nav component for navbar to collapse properly
+    <Nav>
       <LinkContainer to="/login">
         <NavItem>Log In</NavItem>
       </LinkContainer>
+    </Nav>
+
   )
 }
-//
-// const PublicLinks = () => {
-//   return(
-//
-//   )
-// }
 
 class NavBar extends Component {
   constructor(props) {
@@ -57,13 +60,12 @@ class NavBar extends Component {
             <LinkContainer to="/leaderboard">
               <NavItem>Tour Leaderboard</NavItem>
             </LinkContainer>
-            <LoginLinks logoutUser={this.logoutUser} loggedIn={this.props.loggedIn}/>
           </Nav>
+          <LoginLinks logoutUser={this.logoutUser} loggedIn={this.props.loggedIn}/>
         </Navbar.Collapse>
       </Navbar>
     )
   }
 }
-
 
 export default withRouter(NavBar);

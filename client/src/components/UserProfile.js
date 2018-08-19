@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Table} from "react-bootstrap";
-import "../stylesheets/user_profile.css"
+import "../stylesheets/user-profile.css"
 import avatarPlaceholder from "../images/avatar-placeholder.png"
 
 class UserProfile extends Component {
