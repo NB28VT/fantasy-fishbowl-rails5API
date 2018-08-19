@@ -8,23 +8,25 @@ import {withRouter} from 'react-router-dom'
 import { LinkContainer } from "react-router-bootstrap";
 import horizontalLogo from "../images/yellow-logo-horizontal.png"
 
-const NavLinks = (props) => {
+const LoginLinks = (props) => {
   if (props.loggedIn === true) {
     return(
-      <Nav>
         <NavItem onSelect={props.logoutUser}>Log Out</NavItem>
-      </Nav>
     )
   }
 
   return (
-    <Nav>
       <LinkContainer to="/login">
         <NavItem>Log In</NavItem>
       </LinkContainer>
-    </Nav>
   )
 }
+//
+// const PublicLinks = () => {
+//   return(
+//
+//   )
+// }
 
 class NavBar extends Component {
   constructor(props) {
@@ -48,8 +50,14 @@ class NavBar extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <NavLinks logoutUser={this.logoutUser} loggedIn={this.props.loggedIn}/>
-          <Nav pullRight>
+          <Nav>
+            <LinkContainer to="/concerts/upcoming">
+              <NavItem>Upcoming Shows</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/leaderboard">
+              <NavItem>Tour Leaderboard</NavItem>
+            </LinkContainer>
+            <LoginLinks logoutUser={this.logoutUser} loggedIn={this.props.loggedIn}/>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

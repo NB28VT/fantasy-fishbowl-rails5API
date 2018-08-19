@@ -17,14 +17,6 @@ const fakeUserData = {
   }
 }
 
-const fakeTourData = {
-  "tour": {
-    "id" : 1,
-    "name": "Summer 2018",
-    "upcoming_concert_id": 7
-  }
-}
-
 const fakeConcertData = {
   "concert": {
     "venue_name": "Verizon Amphitheatre, Alpharetta, GA",
@@ -57,23 +49,14 @@ class Dashboard extends Component {
     const tourID = userData["current_tour_id"];
 
     if (tourID !== null) {
-      const tourData = this.getTourData(tourID);
       const upcomingConcert = this.getUpcomingConcert(tourID);
-      this.setState({
-        tourData: tourData,
-        upcomingConcert: upcomingConcert
-      });
+      this.setState({upcomingConcert: upcomingConcert});
     }
   }
 
   getUpcomingConcert(tourID) {
     // TODO: fetch upcoming concert via API
     return fakeConcertData["concert"];
-  }
-
-  getTourData() {
-    // TODO: ping tour data
-    return fakeTourData["tour"]
   }
 
   getUserData() {
@@ -85,7 +68,7 @@ class Dashboard extends Component {
     return(
       <div>
         <UserProfile userData={this.state.userData}/>
-        <Leaderboard tourID={this.state.tourData} rankingsLimit={3} />
+        <Leaderboard rankingsLimit={3} />
         <ConcertHeader/>
         <ConcertThumbnail venueName={this.state.upcomingConcert.venue_name} showDate={this.state.upcomingConcert.show_date} venueImage={venueImage}/>
       </div>

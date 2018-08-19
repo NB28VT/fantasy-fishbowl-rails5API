@@ -8,8 +8,9 @@ import '../stylesheets/app.css';
 
 import Login from './Login';
 import Concerts from './Concerts';
-import NavBar from './NavBar'
+import NavBar from './NavBar';
 import Dashboard from "./Dashboard";
+import TourRankings from "./TourRankings";
 
 const cookies = new Cookies();
 
@@ -83,6 +84,7 @@ class App extends Component {
             <div className="inner-content">
               <Route path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
               <Route path="/concerts" component={Concerts}></Route>
+              <Route path="/leaderboard" component={TourRankings}></Route>
               <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}></Route>
             </div>
           </div>
