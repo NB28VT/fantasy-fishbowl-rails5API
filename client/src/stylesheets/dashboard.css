@@ -1,0 +1,10 @@
+.upcoming-concert {
+  padding-top: 5vw;
+  padding-left: 3%;
+  padding-right: 3%;
+  text-align: center;
+}
+
+.concert-header h1 {
+  font-size: 5vw;
+}

@@ -37,8 +37,6 @@ class Login extends Component {
     })
     .then((res) => res.json())
     .then((responseData) => {
-        // this.setCookie(responseData["token"])
-
         this.props.loginUser(responseData["token"]);
         this.setState({redirectToReferrer: true});
       }
@@ -52,10 +50,6 @@ class Login extends Component {
   updatePassword(event) {
     this.setState({password: event.target.value})
   }
-
-  // setCookie(token) {
-  //   cookies.set("token", token, {path: "/"})
-  // }
 
   render() {
     // Hardcode homepage redirect

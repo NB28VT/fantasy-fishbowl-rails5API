@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import UserProfile from "./UserProfile"
 import Leaderboard from "./Leaderboard"
 import ConcertThumbnail from "./ConcertThumbnail"
+import "../stylesheets/dashboard.css"
 
 // todo: load via API, use webpack:
 // https://shakacode.gitbooks.io/react-on-rails/content/docs/additional-reading/rails-assets-relative-paths.html
@@ -22,14 +23,6 @@ const fakeConcertData = {
     "venue_name": "Verizon Amphitheatre, Alpharetta, GA",
     "show_date": "8/13/18"
   }
-}
-
-const ConcertHeader = () => {
-  return(
-    <div className="concert-header">
-      <h1>Next Show</h1>
-    </div>
-  )
 }
 
 class Dashboard extends Component {
@@ -69,8 +62,10 @@ class Dashboard extends Component {
       <div>
         <UserProfile userData={this.state.userData}/>
         <Leaderboard rankingsLimit={3} />
-        <ConcertHeader/>
-        <ConcertThumbnail venueName={this.state.upcomingConcert.venue_name} showDate={this.state.upcomingConcert.show_date} venueImage={venueImage}/>
+        <div className="upcoming-concert">
+          <h1>Next Show</h1>
+          <ConcertThumbnail venueName={this.state.upcomingConcert.venue_name} showDate={this.state.upcomingConcert.show_date} venueImage={venueImage}/>
+        </div>
       </div>
     )
   }
