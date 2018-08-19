@@ -7,21 +7,8 @@ import {
   FormControl,
   Button
 } from 'react-bootstrap';
-// import Cookies from 'universal-cookie';
-
+import WelcomeLogo from "./WelcomeLogo";
 import "../stylesheets/login.css"
-import vertLogo from "../images/yellow-logo-vertical.png"
-
-// const cookies = new Cookies();
-
-const WelcomeMessage = () => {
-  return(
-    <div className="welcome-message">
-      <img alt="logo" width="100%" src={vertLogo}></img>
-      <p>The Setlist Prediction Game</p>
-    </div>
-  )
-}
 
 class Login extends Component {
   constructor(props) {
@@ -80,7 +67,7 @@ class Login extends Component {
 
     return(
       <div className="login-content">
-        <WelcomeMessage />
+        <WelcomeLogo />
         <Form horizontal onSubmit={this.handleSubmit}>
           <FormGroup controlId="formHorizontalEmail">
             <Col sm={10}>
