@@ -5,7 +5,7 @@ class AuthenticationController < ApplicationController
   def authenticate
     token = Services::UserAuthenticator.new(params[:email], params[:password]).generate_auth_token
     render json: {token: token}, status: 200
-  rescue AuthenticationError => e
+  rescue Services::AuthenticationError => e
     render json: {errors: e.message}, status: 401
   end
 

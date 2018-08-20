@@ -16,7 +16,7 @@ module Services
 
     def get_user
       user = User.find_by(email: @email)
-      return user.authenticate(@password) || nil
+      user.try(:authenticate, @password)
     end
   end
 end
