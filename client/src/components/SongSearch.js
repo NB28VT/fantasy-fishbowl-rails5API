@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { debounce } from "debounce";
 
 class SongSearch extends Component {
   constructor(props) {
@@ -9,16 +10,20 @@ class SongSearch extends Component {
 
     })
     this.handleChange = this.handleChange.bind(this);
+    this.checkSongInput = this.checkSongInput.bind(this);
   }
 
-  handleChange(event) {
-    this.setState(this.setState({value: event.target.value}))
-
+  checkSongInput() {
     if (this.state.value.length > 2) {
       this.searchSongs();
     } else {
       this.setState({songs: []})
     }
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+    debounce(this.checkSongInput(), 200, true);
   }
 
   searchSongs() {
