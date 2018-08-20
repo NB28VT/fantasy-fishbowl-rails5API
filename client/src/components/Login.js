@@ -5,7 +5,8 @@ import {
   FormGroup,
   Col,
   FormControl,
-  Button
+  Button,
+  Alert
 } from 'react-bootstrap';
 import WelcomeLogo from "./WelcomeLogo";
 import "../stylesheets/login.css"
@@ -16,12 +17,14 @@ class Login extends Component {
     this.state = {
       redirectToReferrer: false,
       email: "",
-      password: ""
+      password: "",
+      displaySignInError: false
     }
 
     this.updateEmail = this.updateEmail.bind(this);
     this.updatePassword = this.updatePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDismiss = this.handleDismiss.bind(this);
   }
 
   handleSubmit(event) {
@@ -35,12 +38,23 @@ class Login extends Component {
       method: "POST",
       headers: {"Content-Type": "application/json"}
     })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res.status === 401) {
+        throw Error(res.statusText);
+      }
+      return res.json();
+    })
     .then((responseData) => {
         this.props.loginUser(responseData["token"]);
-        this.setState({redirectToReferrer: true});
+        this.setState({
+          redirectToReferrer: true,
+          displaySignInError: false
+        });
+
       }
-    )
+    ).catch((error)=> {
+      this.setState({displaySignInError: true})
+    })
   }
 
   updateEmail(event) {
@@ -51,13 +65,26 @@ class Login extends Component {
     this.setState({password: event.target.value})
   }
 
+  handleDismiss() {
+    this.setState({displaySignInError: false})
+  }
+
   render() {
     // Hardcode homepage redirect
     if (this.state.redirectToReferrer) {
       return(
         <Redirect to="/"/>
       )
+    } else if(this.state.displaySignInError) {
+      return (
+        <div className="alert-message">
+          <Alert bsStyle="danger" onDismiss={this.handleDismiss}>
+           <h4>Invalid email or password, please try again.</h4>
+          </Alert>
+        </div>
+      )
     }
+
 
     return(
       <div className="login-content">
