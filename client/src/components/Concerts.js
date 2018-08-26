@@ -11,7 +11,7 @@ class Concerts extends Component {
         <Switch>
           <Route exact path="/concerts" render={(props) => <ConcertList upcomingOnly={false}/>}></Route>
           <Route path="/concerts/upcoming" render={(props) => <ConcertList upcomingOnly={true}/>}></Route>
-          <Route exact path="/concerts/:id" render={(props) => <Concert authToken={this.props.authToken} {...props}/>}></Route>
+          <Route exact path="/concerts/:id" render={(props) => <Concert authToken={this.props.authToken} loggedIn={this.props.loggedIn} {...props}/>}></Route>
         </Switch>
       </div>
     )

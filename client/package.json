@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3001",
   "start": "http-server -a localhost -p 3000",
   "dependencies": {
+    "downshift": "^2.1.5",
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",

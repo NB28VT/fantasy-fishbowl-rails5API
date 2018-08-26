@@ -52,7 +52,6 @@ class Concert extends Component {
     }
 
     const NewPrediction = () => {
-      // TODO: tie to this.props.logged in
       if (this.props.loggedIn) {
         return(<PredictionForm userID={this.props.userID} concertID={this.state.concert.id}/>)
       } else {
