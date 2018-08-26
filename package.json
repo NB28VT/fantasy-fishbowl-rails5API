@@ -8,5 +8,7 @@
     "deploy": "cp -a client/build/. public/",
     "postinstall": "npm run build && npm run deploy && echo 'Client built!'"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-autocomplete": "^1.8.1"
+  }
 }
