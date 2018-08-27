@@ -6,18 +6,26 @@ import {
   ControlLabel,
   Button
 } from 'react-bootstrap';
-import SongSearch from "./SongSearch";
+import SongSelect from "./SongSelect";
 import "../stylesheets/prediction-form.css"
 
 class PredictionForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      predictionCategories: []
+      predictionCategories: [],
+      songs: []
     }
+    this.fetchPredictionCategories = this.fetchPredictionCategories.bind(this)
+    this.fetchSongList = this.fetchSongList.bind(this)
   }
 
   componentDidMount() {
+    this.fetchPredictionCategories();
+    this.fetchSongList();
+  }
+
+  fetchPredictionCategories() {
     fetch("/prediction_categories",{
       headers: {"Content-Type": "application/json"}
     })
@@ -30,11 +38,23 @@ class PredictionForm extends Component {
     })
   }
 
+  fetchSongList() {
+    console.log("Loading song list");
+    fetch("/songs",{
+      headers: {"Content-Type": "application/json"}
+    })
+    .then((res) => res.json())
+    .then((responseData) => {
+      this.setState({
+        songs: responseData["songs"]
+      })
+    })
+  }
+
   render() {
     const categories = this.state.predictionCategories.map((category) =>
       <Col className="prediction-category" key={category.id} sm={10} >
-        <ControlLabel>{category.name}</ControlLabel>
-        <SongSearch categoryName={category.name}/>
+        <SongSelect categoryName={category.name} songs={this.state.songs}/>
       </Col>
     )
 

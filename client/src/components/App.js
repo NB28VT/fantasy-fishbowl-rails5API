@@ -92,7 +92,7 @@ class App extends Component {
               )}/>
 
               <PrivateRoute path="/home" component={Dashboard} authToken={this.state.authToken} loggedIn={this.state.loggedIn}/>
-              <Route path="/concerts" render={(props) => <Concerts {...props} loggedIn={this.props.loggedIn} />}/>
+              <Route path="/concerts" render={(props) => <Concerts {...props} loggedIn={this.state.loggedIn} />}/>
               <Route path="/leaderboard" component={TourRankings}/>
               <Route path="/login" render={(props) => <Login {...props} loginUser={this.loginUser} />}/>
             </div>
