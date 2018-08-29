@@ -61,7 +61,11 @@ class PredictionForm extends Component {
   }
 
   buildPredictionSubmission() {
-    debugger;
+    const predictionBody = {concert_prediction: {
+        song_predictions_attributes: []
+      }
+    }
+    // TODO: build body for prediciton using the category selections
   }
 
   updateSelection(songID, categoryID) {
@@ -75,24 +79,32 @@ class PredictionForm extends Component {
   }
 
   handleSubmit() {
+    // TODO: allow editing submissions (track in state)
     const endpoint = `concerts/${this.props.concertID}/predictions`;
-    // Need auth header for token (backend assigns token ID)
-    
+    const predictionData = this.buildPredictionSubmission();
 
+    fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": this.props.authToken
+      },
+      body: predictionData
 
-
-
-    debugger;
-    // post "/concerts/#{concert.id}/predictions", params: {
-    //   concert_prediction: {
-    //     song_predictions_attributes: [
-    //       {
-    //         song_id: songs.first.id,
-    //         prediction_category_id: prediction_category.id
-    //       }
-    //     ]
-    //   }
-    // debugger;
+    }).then((res) => {
+      if (res.status === 401) {
+        throw Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then((responseData) => {
+      // Notify user prediction submitted
+      alert("Aw yeah prediction submitted!");
+      }
+    ).catch((error)=> {
+      // TODO: Display some type of sign in error
+      // this.setState({displaySignInError: true})
+    })
   }
 
   render() {

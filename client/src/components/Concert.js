@@ -53,7 +53,7 @@ class Concert extends Component {
 
     const NewPrediction = () => {
       if (this.props.loggedIn) {
-        return(<PredictionForm userID={this.props.userID} concertID={this.state.concert.id}/>)
+        return(<PredictionForm authToken={this.props.authToken} concertID={this.state.concert.id}/>)
       } else {
         return (<NewUserMessage/>)
       }
