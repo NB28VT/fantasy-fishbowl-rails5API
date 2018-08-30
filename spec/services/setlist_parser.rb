@@ -5,27 +5,29 @@ RAW_SETLIST = "{\"error_code\":0,\"error_message\":null,\"response\":{\"count\":
 
 
 RSpec.describe "SetListParser" do
-  before(:all) do
-    parser = Services::SetListParser.new(RAW_SETLIST)
-    @setlist_data = parser.parse
-  end
+  describe "#parse" do
+    before(:all) do
+      parser = Services::SetistParser.new(RAW_SETLIST)
+      @setlist_data = parser.parse
+    end
 
-  it "returns an array of concert sets" do
-    expect(@setlist_data[:concert_sets].count).to eq(3)
-    expect(@setlist_data[:concert_sets].first[:set_number]).to eq(0)
-  end
+    it "returns an array of concert sets" do
+      expect(@setlist_data[:concert_sets].count).to eq(3)
+      expect(@setlist_data[:concert_sets].first[:set_number]).to eq(0)
+    end
 
-  it "includes a set number for each concert set" do
-    expect(@setlist_data[:concert_sets].first[:set_number]).to eq(0)
-  end
+    it "includes a set number for each concert set" do
+      expect(@setlist_data[:concert_sets].first[:set_number]).to eq(0)
+    end
 
-  it "returns a list of song performances in that set" do
-    first_song = @setlist_data[:concert_sets].first[:song_performances].first
-    expect(first_song[:song_name]).to eq("Free")
-  end
+    it "returns a list of song performances in that set" do
+      first_song = @setlist_data[:concert_sets].first[:song_performances].first
+      expect(first_song[:song_name]).to eq("Free")
+    end
 
-  it "returns a setlist position for that song performance" do
-    first_song = @setlist_data[:concert_sets].first[:song_performances].first
-    expect(first_song[:setlist_position]).to eq(0)
+    it "returns a setlist position for that song performance" do
+      first_song = @setlist_data[:concert_sets].first[:song_performances].first
+      expect(first_song[:setlist_position]).to eq(0)
+    end
   end
 end

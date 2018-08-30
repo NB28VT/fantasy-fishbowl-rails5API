@@ -1,34 +1,40 @@
-module Services
-  class SetListParser
-    attr_reader :setlist_data
+class ApiParseError < StandardError; end
 
-    def initialize(setlist_data)
-      @setlist_data = JSON.parse(setlist_data)
+module Services
+  class SetlistParser
+    def initialize(raw_data)
+      @raw_data = raw_data
     end
 
     def parse
-      parsed_setlist = {concert_sets: []}
-      # TODO: clean up!
-      setlist = @setlist_data["response"]["data"][0]["setlistdata"]
+      setlist = find_setlist
       document = Nokogiri::HTML(setlist)
-
-      # break into smaller methods
-
       sets = document.search("p")
+      raise ApiParseError, "No set paragraphs found" if sets.blank?
 
-      sets.each_with_index do |set, set_number|
-        set_attributes = []
-        song_performances = set.search("a").map.with_index{|song, index|  {song_name: song.text, setlist_position: index}}
+      concert_sets = sets.map.with_index{|set_data, set_index| build_concert_set(set_data, set_index)}
+      return {concert_sets: concert_sets}
+    end
 
-        set_attributes = {
-          set_number: set_number,
-          song_performances: song_performances
-        }
+    private
 
-        parsed_setlist[:concert_sets] << set_attributes
-      end
+    def build_concert_set(set_data, set_index)
+      song_performances = build_song_performances(set_data)
+      return {set_number: set_index, song_performances: song_performances}
+    end
 
-      return parsed_setlist
+    def build_song_performances(set_data)
+      return set_data.search("a").map.with_index{|song, index|  {song_name: song.text, setlist_position: index}}
+    end
+
+    def find_setlist
+      response_data = JSON.parse(@raw_data).dig("response", "data")
+      raise ApiParseError, "Empty response data" if response_data.blank?
+
+      setlist_data = response_data.find{|data| data.has_key?("setlistdata")}
+      raise ApiParseError, "Missing setlist data" if setlist_data.blank?
+
+      return setlist_data["setlistdata"]
     end
   end
 end
