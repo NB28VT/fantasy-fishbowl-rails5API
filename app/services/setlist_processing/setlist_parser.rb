@@ -1,9 +1,7 @@
-class ApiParseError < StandardError; end
-
-module Services
+module SetlistProcessing
   class SetlistParser
-    def initialize(raw_data)
-      @raw_data = raw_data
+    def initialize(concert_json)
+      @concert_json = concert_json
     end
 
     def parse
@@ -28,7 +26,7 @@ module Services
     end
 
     def find_setlist
-      response_data = JSON.parse(@raw_data).dig("response", "data")
+      response_data = @concert_json.dig("response", "data")
       raise ApiParseError, "Empty response data" if response_data.blank?
 
       setlist_data = response_data.find{|data| data.has_key?("setlistdata")}

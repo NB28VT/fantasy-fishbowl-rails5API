@@ -2,7 +2,7 @@ require 'net/http'
 require 'dotenv'
 Dotenv.load
 
-module Services
+module SetlistProcessing
   class ConcertDataClient
     def initialize(concert)
       @concert = concert

@@ -1,4 +1,4 @@
-module Services
+module SetlistProcessing
   class PredictionScorer
     def initialize(prediction)
       @prediction = prediction
