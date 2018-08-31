@@ -4,7 +4,7 @@ class Concert < ApplicationRecord
   has_many :song_performances, through: :concert_sets, dependent: :destroy
 
   validates_presence_of :venue_name
-  validates_presence_of :show_date
+  validates_presence_of :show_time
 
   # 8 Hours after show start
   # Don't need santize here:

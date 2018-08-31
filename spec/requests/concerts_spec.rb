@@ -21,46 +21,46 @@ RSpec.describe "Concerts", type: :request do
       expect(json["concerts"].first).to eq(
         {
           "id" => concerts.first.id,
-          "show_date" => concerts.first.show_date.strftime("%m/%d/%Y"),
+          "show_time" => concerts.first.show_time.strftime("%m/%d/%Y"),
           "venue_name" => concerts.first.venue_name
         }
       )
     end
 
     it "returns concerts in chronological order by show date" do
-      create(:concert, show_date: 2.days.from_now)
-      create(:concert, show_date: 1.days.from_now)
+      create(:concert, show_time: 2.days.from_now)
+      create(:concert, show_time: 1.days.from_now)
 
       get "/concerts", params: {}, headers: {Authorization: @token}
 
-      first_show_date = Date.strptime(json["concerts"].first["show_date"], "%m/%d/%Y")
-      second_show_date = Date.strptime(json["concerts"].second["show_date"], "%m/%d/%Y")
+      first_show_date = Date.strptime(json["concerts"].first["show_time"], "%m/%d/%Y")
+      second_show_date = Date.strptime(json["concerts"].second["show_time"], "%m/%d/%Y")
       expect(first_show_date).to be < second_show_date
     end
   end
 
   describe "GET /concerts/upcoming" do
     it "returns a list of upcoming concerts" do
-      upcoming_concert = create(:concert, show_date: 1.days.from_now)
-      past_concert = create(:concert, show_date: 1.days.ago)
+      upcoming_concert = create(:concert, show_time: 1.days.from_now)
+      past_concert = create(:concert, show_time: 1.days.ago)
 
       get "/concerts/upcoming", params: {}, headers: {Authorization: @token}
 
       expect(json["concerts"].count).to eq(1)
 
-      show_date = json["concerts"].first["show_date"]
-      formatted_date = Date.strptime(show_date, "%m/%d/%Y")
+      show_time = json["concerts"].first["show_time"]
+      formatted_date = Date.strptime(show_time, "%m/%d/%Y")
       expect(formatted_date).to be > Date.current
     end
 
     it "sorts concerts in chronological order by show date" do
-      create(:concert, show_date: 2.days.from_now)
-      create(:concert, show_date: 1.days.from_now)
+      create(:concert, show_time: 2.days.from_now)
+      create(:concert, show_time: 1.days.from_now)
 
       get "/concerts/upcoming", params: {}, headers: {Authorization: @token}
 
-      first_show_date = Date.strptime(json["concerts"].first["show_date"], "%m/%d/%Y")
-      second_show_date = Date.strptime(json["concerts"].second["show_date"], "%m/%d/%Y")
+      first_show_date = Date.strptime(json["concerts"].first["show_time"], "%m/%d/%Y")
+      second_show_date = Date.strptime(json["concerts"].second["show_time"], "%m/%d/%Y")
       expect(first_show_date).to be < second_show_date
     end
 
@@ -76,7 +76,7 @@ RSpec.describe "Concerts", type: :request do
         expect(json["concert"]).to eq(
           {
             "id" => concert.id,
-            "show_date" => concert.show_date.strftime("%m/%d/%Y"),
+            "show_time" => concert.show_time.strftime("%m/%d/%Y"),
             "venue_name" => concert.venue_name,
             "concert_sets" => []
           }

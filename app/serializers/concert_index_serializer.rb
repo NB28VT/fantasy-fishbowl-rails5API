@@ -1,7 +1,7 @@
 class ConcertIndexSerializer < ActiveModel::Serializer
-  attributes :id, :show_date, :venue_name
+  attributes :id, :show_time, :venue_name
 
-  def show_date
-    object.show_date.strftime("%m/%d/%Y")
+  def show_time
+    object.show_time.strftime("%m/%d/%Y")
   end
 end
