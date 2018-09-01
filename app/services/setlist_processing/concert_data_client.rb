@@ -12,6 +12,7 @@ module SetlistProcessing
       endpoint = "https://api.phish.net/v3/setlists/get?"
       endpoint += "apikey=#{ENV['PHISH_NET_API_KEY']}"
       endpoint += "&showdate=#{formatted_show_time}"
+      # TODO: rescue from connection error
       return Net::HTTP.get(URI(endpoint))
     end
 
