@@ -6,8 +6,7 @@ class Concert < ApplicationRecord
   validates_presence_of :venue_name
   validates_presence_of :show_time
 
-  # 8 Hours after show start
-  # Don't need santize here:
   scope :performed, -> { where("show_time < ?",  8.hours.ago) }
-  scope :missing_setlist, -> { left_joins(:concert_sets).where(concert_sets: {id: nil})}
+  scope :missing_setlist, -> { left_joins(:concert_sets).where(concert_sets: {id: nil}) }
+  scope :with_setlist, -> { joins(:concert_sets).distinct }
 end

@@ -1,9 +1,11 @@
 # prediction categories
-PredictionCategory.find_or_create_by(name: "First Set Opener", set_number: 1, setlist_position: 0)
-PredictionCategory.find_or_create_by(name: "First Set Closer", set_number: 1, setlist_position: -1)
-PredictionCategory.find_or_create_by(name: "Second Set Opener", set_number: 2, setlist_position: 0)
-PredictionCategory.find_or_create_by(name: "Second Set Closer", set_number: 2, setlist_position: -1)
-PredictionCategory.find_or_create_by(name: "Encore", set_number: 3, setlist_position: 0)
+PredictionCategory.find_or_create_by(name: "First Set Opener", set_number: 0, setlist_position: 0)
+PredictionCategory.find_or_create_by(name: "First Set Closer", set_number: 0, setlist_position: -1)
+PredictionCategory.find_or_create_by(name: "Second Set Opener", set_number: 1, setlist_position: 0)
+PredictionCategory.find_or_create_by(name: "Second Set Closer", set_number: 1, setlist_position: -1)
+PredictionCategory.find_or_create_by(name: "Encore", set_number: 2)
+
+
 
 # Summer Tour
 # All times in Eastern

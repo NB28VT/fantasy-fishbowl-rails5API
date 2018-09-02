@@ -22,7 +22,7 @@ module SetlistProcessing
 
     def pull_setlist
       puts "Pulling setlist for #{@concert.id}"
-      raw_data = ConcertDataClient.new(@concert).pull_setlist
+      raw_data = SetlistProcessing::ConcertDataClient.new(@concert).pull_setlist
       concert_json = JSON.parse(raw_data)
       return SetlistProcessing::SetlistParser.new(concert_json).parse
     end
