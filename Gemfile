@@ -23,6 +23,7 @@ gem 'active_model_serializers', '~> 0.9.3'
 gem "dotenv-rails"
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
 gem 'awesome_print', '~> 1.8'
+gem 'curb', '~> 0.9.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

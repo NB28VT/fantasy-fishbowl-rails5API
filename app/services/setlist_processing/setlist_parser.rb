@@ -1,3 +1,5 @@
+class ApiParseError < StandardError; end
+
 module SetlistProcessing
   class SetlistParser
     def initialize(concert_json)
@@ -18,7 +20,7 @@ module SetlistProcessing
     private
 
     def validate_setlist_data
-      raise ApiParseError, "Error Pulling Setlist: #{concert_json["error_message"]}" if @concert_json["error_message"].present?
+      raise ApiParseError, "Error Pulling Setlist: #{@concert_json["error_message"]}" if @concert_json["error_message"].present?
       raise ApiParseError, "Setlist Not Found" if @concert_json["response"]["count"] == 0
     end
 

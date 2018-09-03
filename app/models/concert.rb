@@ -9,4 +9,8 @@ class Concert < ApplicationRecord
   scope :performed, -> { where("show_time < ?",  8.hours.ago) }
   scope :missing_setlist, -> { left_joins(:concert_sets).where(concert_sets: {id: nil}) }
   scope :with_setlist, -> { joins(:concert_sets).distinct }
+
+  def formatted_show_time
+    self.show_time.strftime('%F')
+  end
 end

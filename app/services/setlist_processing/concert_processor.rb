@@ -1,4 +1,3 @@
-class ApiParseError < StandardError; end
 class SetlistProcessingError < StandardError; end
 
 module SetlistProcessing
@@ -10,22 +9,21 @@ module SetlistProcessing
     def process
       setlist_data = pull_setlist
       persist_setlist(setlist_data)
-
       puts "Completed setlist for #{@concert.id}"
-    rescue ApiParseError => e
-      puts "There was a problem parsing the setlist from the Phish.net API for concert #{@concert.id} - #{e.message}"
-    rescue SetlistProcessingError => e
-      puts "There was a problem processing the setlist for concert #{@concert.id} - #{e.message}"
+    rescue => e
+      puts "There was a problem processing the setlist for concert #{@concert.id} - #{e.class}\n #{e.message}\n #{e.backtrace}"
     end
 
     private
 
     def pull_setlist
       puts "Pulling setlist for #{@concert.id}"
-      raw_data = SetlistProcessing::ConcertDataClient.new(@concert).pull_setlist
-      concert_json = JSON.parse(raw_data)
-      return SetlistProcessing::SetlistParser.new(concert_json).parse
+      params = {showdate: @concert.formatted_show_time}
+      raw_data = PhishNetApiClient.new.api_get("setlists/get", params)
+      json_data = JSON.parse(raw_data)
+      return SetlistProcessing::SetlistParser.new(json_data).parse
     end
+
 
     def persist_setlist(setlist_data)
       setlist_data[:concert_sets].each{|set| build_set(set) }
