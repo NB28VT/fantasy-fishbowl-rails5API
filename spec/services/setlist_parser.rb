@@ -6,27 +6,51 @@ end
 
 RSpec.describe "SetListParser" do
   describe "#parse" do
-    before(:each) do
-      parser = SetlistProcessing::SetlistParser.new(valid_setlist)
-      @setlist_data = parser.parse
+    context "with valid data" do
+      before(:each) do
+        parser = SetlistProcessing::SetlistParser.new(valid_setlist)
+        @setlist_data = parser.parse
+      end
+
+      it "returns an array of concert sets" do
+        expect(@setlist_data[:concert_sets].count).to eq(3)
+      end
+
+      it "includes a set number for each concert set" do
+        expect(@setlist_data[:concert_sets].all?{|set| set[:set_number].present? }).to eq(true)
+      end
+
+      it "returns a list of song performances in that set" do
+        first_song = @setlist_data[:concert_sets].first[:song_performances].first
+        expect(first_song[:song_name]).to eq("Free")
+      end
+
+      it "returns a setlist position for a song performance" do
+        first_song = @setlist_data[:concert_sets].first[:song_performances].first
+        expect(first_song[:setlist_position]).to eq(0)
+      end
     end
 
-    it "returns an array of concert sets" do
-      expect(@setlist_data[:concert_sets].count).to eq(3)
-    end
+    context "with invalid data" do
+      context "when an error message is present" do
+        it "raises an error"
+      end
 
-    it "includes a set number for each concert set" do
-      expect(@setlist_data[:concert_sets].all?{|set| set[:set_number].present? }).to eq(true)
-    end
+      context "when the response data is empty" do
+        it "raises an error"
+      end
 
-    it "returns a list of song performances in that set" do
-      first_song = @setlist_data[:concert_sets].first[:song_performances].first
-      expect(first_song[:song_name]).to eq("Free")
-    end
+      context "when no results are returned" do
+        it "raises an error"
+      end
 
-    it "returns a setlist position for that song performance" do
-      first_song = @setlist_data[:concert_sets].first[:song_performances].first
-      expect(first_song[:setlist_position]).to eq(0)
+      context "when setlist data is missing" do
+        it "raises an error"
+      end
+
+      context "when there are no set paragraphs in the returned html" do
+        it "raises an error"
+      end
     end
   end
 end

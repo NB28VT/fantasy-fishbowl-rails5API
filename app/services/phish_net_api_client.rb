@@ -9,7 +9,8 @@ class PhishNetApiClient
     url = base_url + endpoint + "?apikey=#{@api_key}" + url_params(params)
     response = Curl::Easy.perform(url)
     raise PhishNetConnectionError, "Error in get response: #{response.response_code}, #{response.body_str}" if response.response_code != 200
-    return response.body_str
+
+    return {code: response.response_code, body: reponse.body_str}
   end
 
   private
