@@ -20,8 +20,7 @@ module SetlistProcessing
       puts "Pulling setlist for #{@concert.id}"
       params = {showdate: @concert.formatted_show_time}
       raw_data = PhishNetApiClient.new.api_get("setlists/get", params)
-      json_data = JSON.parse(raw_data)
-      return SetlistProcessing::SetlistParser.new(json_data).parse
+      return SetlistProcessing::SetlistParser.new(raw_data).parse
     end
 
 

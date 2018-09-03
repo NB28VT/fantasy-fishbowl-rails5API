@@ -2,8 +2,8 @@ class ApiParseError < StandardError; end
 
 module SetlistProcessing
   class SetlistParser
-    def initialize(concert_json)
-      @concert_json = concert_json
+    def initialize(raw_data)
+      @concert_json = JSON.parse(raw_data)
     end
 
     def parse
