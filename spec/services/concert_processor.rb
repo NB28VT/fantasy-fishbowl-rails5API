@@ -4,7 +4,6 @@ RSpec.describe "ConcertProcessor" do
   describe "#process" do
     context "with a valid API response" do
       before(:each) do
-        # Stub external dependency and test processing in isolation
         allow_any_instance_of(PhishNetApiClient).to receive(:api_get).and_return(mocked_setlist_response)
         @concert = create(:concert)
         SetlistProcessing::ConcertProcessor.new(@concert).process
@@ -26,7 +25,16 @@ RSpec.describe "ConcertProcessor" do
   end
 
   context "with an invalid API response" do
-    it "raises an error"
+    it "raises an error" do
+      mocked_response = {
+        code: 200,
+        body: {error_code: 0, error_message: "Invalid Credentials", response: {count: 1, setlistdata: "setlist"}}.to_json
+      }
+      allow_any_instance_of(PhishNetApiClient).to receive(:api_get).and_return(mocked_response)
+      @concert = create(:concert)
+
+      expect { SetlistProcessing::ConcertProcessor.new(@concert).process }.to raise_error(StandardError)
+    end
   end
 end
 

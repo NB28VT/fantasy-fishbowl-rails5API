@@ -22,11 +22,11 @@ module SetlistProcessing
     end
 
     def empty_response_data?
-      @concert_json.dig("response", "data").blank?
+      @concert_json["response"]["data"].blank?
     end
 
     def missing_setlist_data?
-      @concert_json.dig("response", "data").find{|data| data.has_key?("setlistdata")}.nil?
+      @concert_json["response"]["data"].find{|data| data.has_key?("setlistdata")}.nil?
     end
   end
 end

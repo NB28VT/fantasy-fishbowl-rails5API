@@ -1,5 +1,3 @@
-class SetlistProcessingError < StandardError; end
-
 module SetlistProcessing
   class ConcertProcessor
     def initialize(concert)
@@ -10,7 +8,8 @@ module SetlistProcessing
       setlist_data = pull_setlist
       save_setlist(setlist_data)
     rescue => e
-      puts "There was a problem processing the setlist for concert #{@concert.id} - #{e.class}\n #{e.message}\n #{e.backtrace}"
+      # TODO: admin mailer alert
+      raise "There was a problem processing the setlist for concert #{@concert.id} - #{e.class}\n #{e.message}\n #{e.backtrace}"
     end
 
     private
