@@ -17,6 +17,7 @@ module SetlistProcessing
     def pull_setlist
       params = {showdate: @concert.formatted_show_time}
       api_response = PhishNetApiClient.new.api_get("setlists/get", params)
+      raise PhishNetConnectionError, "Error in get response: #{response.response_code}, #{response.body_str}" if api_response[:code] != 200
       raw_data = api_response[:body]
 
       return SetlistProcessing::SetlistParser.new(raw_data).parse
