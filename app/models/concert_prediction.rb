@@ -9,6 +9,7 @@ class ConcertPrediction < ApplicationRecord
 
   validates_presence_of :user_id
   validates_presence_of :concert_id
-  # TODO: validate uniqueness of song predictions: i.e.,
-  # can't create two predictions for the same set and set position
+
+  scope :concert_performed, -> { joins(:concert).merge(Concert.performed.with_setlist) }
+  scope :unscored, -> { where(score: nil) }
 end

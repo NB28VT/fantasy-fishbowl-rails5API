@@ -1,8 +1,7 @@
 require "rails_helper"
-require_relative "../../lib/services/prediction_scorer.rb"
 
 RSpec.describe "PredictionScorer" do
-  describe "#call" do
+  describe "#score" do
     it "scores a correctly placed song" do
       concert = create(:concert)
       concert_set = create(:concert_set, concert: concert, set_number: 1)
@@ -17,7 +16,9 @@ RSpec.describe "PredictionScorer" do
         prediction_category: category
       )
 
-      expect(PredictionScorer.call(concert_prediction)).to eq(3)
+      PredictionScorer.new(concert_prediction).score
+
+      expect(concert_prediction.score).to eq(3)
     end
 
     it "scores a song that was played but not in the predicted position" do
@@ -34,7 +35,9 @@ RSpec.describe "PredictionScorer" do
         prediction_category: category
       )
 
-      expect(PredictionScorer.call(concert_prediction)).to eq(1)
+      PredictionScorer.new(concert_prediction).score
+
+      expect(concert_prediction.score).to eq(1)
     end
   end
 end
