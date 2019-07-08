@@ -3,9 +3,9 @@ class AuthenticationController < ApplicationController
   skip_before_action :authenticate_request
 
   def authenticate
-    token = Services::UserAuthenticator.new(params[:email], params[:password]).generate_auth_token
+    token = UserAuthenticator.new(params[:email], params[:password]).generate_auth_token
     render json: {token: token}, status: 200
-  rescue Services::AuthenticationError => e
+  rescue StandardError => e
     render json: {errors: e.message}, status: 401
   end
 
