@@ -36,6 +36,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.7', '>= 3.7.2'
   gem 'pry'
+  gem 'solargraph'
 end
 
 group :test do
