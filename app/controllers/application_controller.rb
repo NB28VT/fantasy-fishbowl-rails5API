@@ -12,7 +12,7 @@ class ApplicationController < ActionController::API
   private
 
   def authenticate_request
-    @current_user = Services::RequestAuthenticator.new(request.headers).authenticate
+    @current_user = RequestAuthenticator.new(request.headers).authenticate
     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
 end
