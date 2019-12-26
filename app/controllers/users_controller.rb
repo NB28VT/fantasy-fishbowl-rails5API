@@ -4,9 +4,8 @@ class UsersController < ApplicationController
     render json: predictions, root: "concert_predictions"
   end
 
-  def leaderboard
-    # init leaderboard calculation service
-    # pass in all users
-    # serialize in a list ordered by the rankings top to bottom
+  def prediction_rankings
+    rankings = User.rank_users
+    render json: rankings
   end
 end

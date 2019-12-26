@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     member do
       get :predictions
     end
+    collection do
+      get :prediction_rankings
+    end
   end
 
   resources :prediction_categories, only: [:index]
