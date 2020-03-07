@@ -5,7 +5,7 @@ class RequestAuthenticator
 
   def authenticate
     return nil unless auth_headers.present?
-    decoded_token = Services::JsonWebToken.new.decode(auth_headers)
+    decoded_token = JsonWebToken.new.decode(auth_headers)
     User.find_by(id: decoded_token[:user_id])
   end
 
