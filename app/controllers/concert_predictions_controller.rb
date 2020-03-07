@@ -12,7 +12,6 @@ class ConcertPredictionsController < ApplicationController
   def create
     concert = Concert.find(params[:concert_id])
     full_params = concert_prediction_params.merge({concert_id: concert.id, user_id: @current_user.id})
-    # full_params = concert_prediction_params.merge({user_id: @current_user.id})
     prediction = ConcertPrediction.new(full_params)
 
     if prediction.save!
