@@ -12,6 +12,7 @@ class ConcertPredictionsController < ApplicationController
   def create
     concert = Concert.find(params[:concert_id])
     full_params = concert_prediction_params.merge({concert_id: concert.id, user_id: @current_user.id})
+    # full_params = concert_prediction_params.merge({user_id: @current_user.id})
     prediction = ConcertPrediction.new(full_params)
 
     if prediction.save!
@@ -37,7 +38,7 @@ class ConcertPredictionsController < ApplicationController
   private
 
   def concert_prediction_params
-    params.require(:concert_prediction).permit(song_predictions_attributes: [:id, :song_id, :prediction_category_id])
+    params.require(:concert_prediction).permit(:concert_id, :user_id, song_predictions_attributes: [:id, :song_id, :prediction_category_id])
   end
 
 end
