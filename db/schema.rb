@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901013743) do
+ActiveRecord::Schema.define(version: 20200308142335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,11 +33,19 @@ ActiveRecord::Schema.define(version: 20180901013743) do
     t.index ["concert_id"], name: "index_concert_sets_on_concert_id", using: :btree
   end
 
-  create_table "concerts", force: :cascade do |t|
-    t.string   "venue_name"
+  create_table "concert_tours", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "show_time",  null: false
+  end
+
+  create_table "concerts", force: :cascade do |t|
+    t.string   "venue_name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.datetime "show_time",       null: false
+    t.integer  "concert_tour_id"
+    t.index ["concert_tour_id"], name: "index_concerts_on_concert_tour_id", using: :btree
   end
 
   create_table "prediction_categories", force: :cascade do |t|
@@ -85,6 +93,7 @@ ActiveRecord::Schema.define(version: 20180901013743) do
   add_foreign_key "concert_predictions", "concerts"
   add_foreign_key "concert_predictions", "users"
   add_foreign_key "concert_sets", "concerts"
+  add_foreign_key "concerts", "concert_tours"
   add_foreign_key "song_performances", "concert_sets"
   add_foreign_key "song_performances", "songs"
   add_foreign_key "song_predictions", "concert_predictions"
