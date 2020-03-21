@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :concert_tours, only: [:index, :show]
+
   resources :prediction_categories, only: [:index]
 
   resources :songs, only: [:index] do
