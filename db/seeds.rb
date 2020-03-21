@@ -7,29 +7,96 @@ PredictionCategory.find_or_create_by(name: "Encore", set_number: 2)
 
 
 
-# Summer Tour
-# All times in Eastern
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,17,21,30), venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,18,21,30), venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,20,22,30), venue_name: "The Gorge Amphitheatre, George, WA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,21,22,30), venue_name: "The Gorge Amphitheatre, George, WA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,22,22,30), venue_name: "The Gorge Amphitheatre, George, WA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,24,22,30), venue_name: "Bill Graham Civic Auditorium, San Francisco, CA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,25,22,30), venue_name: "Bill Graham Civic Auditorium, San Francisco, CA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,27,22,30), venue_name: "The Forum, Inglewood, CA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,28,22,30), venue_name: "The Forum, Inglewood, CA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,7,31,20,30), venue_name: "Austin360 Amphitheater, Austin, TX")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,3,19,30), venue_name: "Verizon Amphitheatre Alpharetta, GA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,4,19,30), venue_name: "Verizon Amphitheatre Alpharetta, GA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,5,19,30), venue_name: "Verizon Amphitheatre Alpharetta, GA")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,7,19,30), venue_name: "BB&T Pavilion, Camden, NJ")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,8,19,30), venue_name: "BB&T Pavilion, Camden, NJ")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,10,19), venue_name: "Coastal Credit Union Music Park at Walnut Creek, Raleigh, NC")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,11,19), venue_name: "Merriweather Post Pavilion, Columbia, MD")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,12,19), venue_name: "Merriweather Post Pavilion, Columbia, MD")
-Concert.find_or_create_by(show_time: DateTime.new(2018,8,31,21,30), venue_name: "Dick’s Sporting Goods Park, Commerce City, CO")
-Concert.find_or_create_by(show_time: DateTime.new(2018,9,1,21,30), venue_name: "Dick’s Sporting Goods Park, Commerce City, CO")
-Concert.find_or_create_by(show_time: DateTime.new(2018,9,2,21,30), venue_name: "Dick’s Sporting Goods Park, Commerce City, CO")
+# Summer Tour 2020
+# TODO: localize times
+
+summer_2020 = ConcertTour.find_or_create_by(name: "Summer 2020")
+
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,14,19,30), venue_name: "Matthew Knight Arena, Eugene, OR", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,15,19,30), venue_name: "Matthew Knight Arena, Eugene, OR", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,17,19,30), venue_name: "Gorge Amphitheatre, George, WA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,18,19,30), venue_name: "Gorge Amphitheatre, George, WA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,19,19,30), venue_name: "Gorge Amphitheatre, George, WA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,21,18,30),
+    venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV",
+    concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,22,18,30),
+    venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV",
+    concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,24,21,30), venue_name: "The Forum, Inglewood, CA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,25,21,30), venue_name: "Chase Center, San Francisco, CA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,26,21,30), venue_name: "Chase Center, San Francisco, CA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,29,21,00), venue_name: "Walmart AMP, Rogers, AR", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,7,31,19,30), venue_name: "Oak Mountain Amphitheatre, Pelham, AL", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,1,19,00), venue_name: "Piedmont Park, Atlanta, GA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,2,19,00), venue_name: "Piedmont Park, Atlanta, GA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,4,19,00), venue_name: "Ascend Amphitheater, Nashville, TN", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,5,19,00), venue_name: "Ascend Amphitheater, Nashville, TN", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,7,21,00), venue_name: "Ruoff Music Center, Noblesville, IN", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,8,21,00), venue_name: "Ruoff Music Center, Noblesville, IN", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,9,21,00), venue_name: "Ruoff Music Center, Noblesville, IN", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,11,19,00), venue_name: "Giant Center, Hershey, PA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,12,19,00), venue_name: "Giant Center, Hershey, PA", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,14,19,30), venue_name: "Atlantic City Beach, Atlantic City, NJ", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,15,19,30), venue_name: "Atlantic City Beach, Atlantic City, NJ", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,8,16,19,30), venue_name: "Atlantic City Beach, Atlantic City, NJ", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,9,04,19,30), venue_name: "DICK’S Sporting Goods Park, Commerce City, CO", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,9,05,19,30), venue_name: "DICK’S Sporting Goods Park, Commerce City, CO", concert_tour: summer_2020
+)
+Concert.find_or_create_by(
+    show_time: DateTime.new(2020,9,06,19,30), venue_name: "DICK’S Sporting Goods Park, Commerce City, CO", concert_tour: summer_2020
+)
 
 
 
