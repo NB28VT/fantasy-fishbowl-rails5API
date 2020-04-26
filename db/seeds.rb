@@ -11,10 +11,11 @@ PredictionCategory.find_or_create_by(name: "Encore", set_number: 2)
 # TODO: localize times
 
 summer_2020 = ConcertTour.find_or_create_by(name: "Summer 2020")
-
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,14,19,30), venue_name: "Matthew Knight Arena, Eugene, OR", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/eugene_or.jpg'), filename: 'eugene_or.jpg', content_type: "application/jpg")
+
+
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,15,19,30), venue_name: "Matthew Knight Arena, Eugene, OR", concert_tour: summer_2020
 )
