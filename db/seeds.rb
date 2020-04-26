@@ -18,86 +18,90 @@ Concert.find_or_create_by(
 
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,15,19,30), venue_name: "Matthew Knight Arena, Eugene, OR", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/eugene_or.jpg'), filename: 'eugene_or.jpg', content_type: "application/jpg")
+
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,17,19,30), venue_name: "Gorge Amphitheatre, George, WA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/george_wa.jpg'), filename: 'geore_wa.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,18,19,30), venue_name: "Gorge Amphitheatre, George, WA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/george_wa.jpg'), filename: 'geore_wa.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,19,19,30), venue_name: "Gorge Amphitheatre, George, WA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/george_wa.jpg'), filename: 'geore_wa.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,21,18,30),
     venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV",
     concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/stateline_nv.jpg'), filename: 'stateline_nv.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,22,18,30),
     venue_name: "Lake Tahoe Outdoor Arena at Harveys, Stateline, NV",
     concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/stateline_nv.jpg'), filename: 'stateline_nv.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,24,21,30), venue_name: "The Forum, Inglewood, CA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/inglewood_ca.jpeg'), filename: 'inglewood_ca.jpeg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,25,21,30), venue_name: "Chase Center, San Francisco, CA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/san_fransisco_ca.jpg'), filename: 'san_fransisco_ca.jpg', content_type: "application/jpg")
+
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,26,21,30), venue_name: "Chase Center, San Francisco, CA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/san_fransisco_ca.jpg'), filename: 'san_fransisco_ca.jpg', content_type: "application/jpg")
+
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,29,21,00), venue_name: "Walmart AMP, Rogers, AR", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/rogers_ar.jpg'), filename: 'rogers_ar.jpg', content_type: "application/jpg")
+
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,7,31,19,30), venue_name: "Oak Mountain Amphitheatre, Pelham, AL", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/pelham_al.jpg'), filename: 'pelham_al.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,1,19,00), venue_name: "Piedmont Park, Atlanta, GA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/atlanta_ga.jpg'), filename: 'atlanta_ga.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,2,19,00), venue_name: "Piedmont Park, Atlanta, GA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/atlanta_ga.jpg'), filename: 'atlanta_ga.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,4,19,00), venue_name: "Ascend Amphitheater, Nashville, TN", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/nashville_tn.jpg'), filename: 'nashville_tn.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,5,19,00), venue_name: "Ascend Amphitheater, Nashville, TN", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/nashville_tn.jpg'), filename: 'nashville_tn.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,7,21,00), venue_name: "Ruoff Music Center, Noblesville, IN", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/noblesville_in.jpg'), filename: 'noblesville_in.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,8,21,00), venue_name: "Ruoff Music Center, Noblesville, IN", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/noblesville_in.jpg'), filename: 'noblesville_in.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,9,21,00), venue_name: "Ruoff Music Center, Noblesville, IN", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/noblesville_in.jpg'), filename: 'noblesville_in.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,11,19,00), venue_name: "Giant Center, Hershey, PA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/hershey_pa.jpg'), filename: 'hershey_pa.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,12,19,00), venue_name: "Giant Center, Hershey, PA", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/hershey_pa.jpg'), filename: 'hershey_pa.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,14,19,30), venue_name: "Atlantic City Beach, Atlantic City, NJ", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/atlantic_city_nj.jpg'), filename: 'atlantic_city_nj.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,15,19,30), venue_name: "Atlantic City Beach, Atlantic City, NJ", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/atlantic_city_nj.jpg'), filename: 'atlantic_city_nj.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,8,16,19,30), venue_name: "Atlantic City Beach, Atlantic City, NJ", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/atlantic_city_nj.jpg'), filename: 'atlantic_city_nj.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,9,04,19,30), venue_name: "DICK’S Sporting Goods Park, Commerce City, CO", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/commerce_city_co.jpg'), filename: 'commerce_city_co.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,9,05,19,30), venue_name: "DICK’S Sporting Goods Park, Commerce City, CO", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/commerce_city_co.jpg'), filename: 'commerce_city_co.jpg', content_type: "application/jpg")
 Concert.find_or_create_by(
     show_time: DateTime.new(2020,9,06,19,30), venue_name: "DICK’S Sporting Goods Park, Commerce City, CO", concert_tour: summer_2020
-)
+).venue_image.attach(io: File.open('app/assets/commerce_city_co.jpg'), filename: 'commerce_city_co.jpg', content_type: "application/jpg")
 
 
 
