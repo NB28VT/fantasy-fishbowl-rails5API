@@ -3,12 +3,12 @@ class ConcertsController < ApplicationController
 
   def index
     concerts = Concert.all.order("show_time ASC")
-    render json: concerts, each_serializer: ConcertIndexSerializer
+    render json: concerts, each_serializer: ConcertSerializer
   end
 
   def upcoming
     concerts = Concert.where("show_time > ?", Time.now).order("show_time ASC")
-    render json: concerts, each_serializer: ConcertIndexSerializer
+    render json: concerts, each_serializer: ConcertSerializer
   end
 
   def show
