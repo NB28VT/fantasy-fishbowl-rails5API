@@ -3,6 +3,8 @@ class Concert < ApplicationRecord
   has_many :concert_predictions, dependent: :destroy
   has_many :song_performances, through: :concert_sets, dependent: :destroy
 
+  has_one_attached :venue_image
+
   belongs_to :concert_tour
 
   validates_presence_of :venue_name
