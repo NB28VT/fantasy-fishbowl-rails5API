@@ -6,12 +6,11 @@ Fantasy Fishbowl is a work in progress fantasy sports-style app designed for mob
 
 This repo comprises the Rails 5 API backend for the app; you can view the TypeScript/React.js front end repo [here](https://github.com/NB28VT/fantasy-fishbowl-typescript-client).
 
-<!-- TODO: LINK TO PERSONAL WEBSITE -->
-Fantasy Fishbowl is an ongoing personal project built by Nathan Burgess.
+Fantasy Fishbowl is an ongoing personal project built by [Nathan Burgess](https://nb28vt.github.io/).
 
 ## Current Technical Features/Toolchain
 
-* Ruby on Rails 5 JSON [API](https://guides.rubyonrails.org/api_app.html)
+* Ruby on Rails 5 [JSON API](https://guides.rubyonrails.org/api_app.html)
 * Rails [ActiveModelSerializers](https://github.com/rails-api/active_model_serializers) for JSON serialization
 * [JSON Web Token](https://jwt.io/introduction/) authentication
 * Test suite built with [RSpec](https://rspec.info/)
