@@ -11,7 +11,7 @@ Fantasy Fishbowl is an ongoing personal project built by [Nathan Burgess](https:
 ## Current Technical Features/Toolchain
 
 * Ruby on Rails 5 [JSON API](https://guides.rubyonrails.org/api_app.html)
-* Rails [ActiveModelSerializers](https://github.com/rails-api/active_model_serializers) for JSON serialization
+* Rails [ActiveModelSerializers](https://www.rubydoc.info/gems/active_model_serializers) for JSON serialization
 * [JSON Web Token](https://jwt.io/introduction/) authentication
 * Test suite built with [RSpec](https://rspec.info/)
 * Image asset storage with Rails [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html)
@@ -19,7 +19,7 @@ Fantasy Fishbowl is an ongoing personal project built by [Nathan Burgess](https:
 * Custom [Nokogiri](https://nokogiri.org/) parser for serializing Phish.net API data that is returned as HTML instead of JSON
 
 <p float="left">
-<img src="lib/screenshots/ffupcoming.png" width="32%;">
-  <img src="lib/screenshots/ffprediction.png" width="32%;">
-  <img src="lib/screenshots/ffsongselect.png" width="32%;">
+<img src="lib/screenshots/ffupcoming600.png" width="32%;">
+  <img src="lib/screenshots/ffpredictionfilled600.png" width="32%;">
+  <img src="lib/screenshots/ffsongselect600.png" width="32%;">
 </p>
