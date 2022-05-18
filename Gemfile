@@ -21,7 +21,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jwt', '~> 1.5', '>= 1.5.4'
 gem 'active_model_serializers', '~> 0.9.3'
 gem "dotenv-rails"
-gem 'nokogiri', '~> 1.6', '>= 1.6.8'
+gem 'nokogiri', '~> 1.13'
 gem 'awesome_print', '~> 1.8'
 gem 'curb', '~> 0.9.3'
 
