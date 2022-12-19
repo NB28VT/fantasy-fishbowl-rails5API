@@ -1,7 +1,5 @@
-module Support
-  module ResponseHelper
-    def json
-      JSON.parse(response.body)
-    end
+module ResponseHelper
+  def json
+    JSON.parse(response.body)
   end
 end
