@@ -7,24 +7,12 @@ RSpec.describe "Concerts", type: :request do
   end
 
   describe "GET /concerts" do
-    it "raises an error if a user is not authenticated" do
-      get "/concerts"
-      expect(response.response_code).to eq(401)
-    end
-
     it "returns a list of concerts" do
       concerts = create_list(:concert, 2)
 
       get "/concerts", params: {}, headers: {Authorization: @token}
 
       expect(json["concerts"].count).to eq(2)
-      expect(json["concerts"].first).to eq(
-        {
-          "id" => concerts.first.id,
-          "show_time" => concerts.first.show_time.strftime("%m/%d/%Y"),
-          "venue_name" => concerts.first.venue_name
-        }
-      )
     end
 
     it "returns concerts in chronological order by show date" do
@@ -78,6 +66,7 @@ RSpec.describe "Concerts", type: :request do
             "id" => concert.id,
             "show_time" => concert.show_time.strftime("%m/%d/%Y"),
             "venue_name" => concert.venue_name,
+            "venue_image_src" => nil,
             "concert_sets" => []
           }
         )

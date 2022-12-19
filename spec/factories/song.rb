@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :song do
-    name { Faker::UmphreysMcgee.song }
+    name { Faker::Music::UmphreysMcgee.song }
   end
 end
