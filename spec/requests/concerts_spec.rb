@@ -7,11 +7,6 @@ RSpec.describe "Concerts", type: :request do
   end
 
   describe "GET /concerts" do
-    it "raises an error if a user is not authenticated" do
-      get "/concerts"
-      expect(response.response_code).to eq(401)
-    end
-
     it "returns a list of concerts" do
       concerts = create_list(:concert, 2)
 
