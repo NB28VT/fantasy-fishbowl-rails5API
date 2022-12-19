@@ -73,6 +73,7 @@ RSpec.describe "Concerts", type: :request do
             "id" => concert.id,
             "show_time" => concert.show_time.strftime("%m/%d/%Y"),
             "venue_name" => concert.venue_name,
+            "venue_image_src" => nil,
             "concert_sets" => []
           }
         )
